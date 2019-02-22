@@ -30,7 +30,7 @@ class GameBox extends Component {
     request.send();
   };
 
-  drawCards() {
+  drawCards(player) {
     const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=5`;
     const request = new XMLHttpRequest();
     request.open('GET', url);
@@ -39,24 +39,22 @@ class GameBox extends Component {
       if (request.status !== 200) return;
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
-      console.log(data);
-      return data;
+      console.log("data:", data);
+      const obj = {};
+      // could change to fetch
+      obj[player] = data;
+      this.setState(obj);
     });
 
     request.send();
-    return data;
   };
 
   allocateCards() {
-    const p1Drawn = this.drawCards();
-    console.log("p1Drawn:", p1Drawn);
-    this.setState({player1cards: p1Drawn})
-    const p2Drawn = this.drawCards();
-    this.setState({player2cards: p2Drawn})
+    const p1Drawn = this.drawCards("player1cards");
+    const p2Drawn = this.drawCards("player2cards");
   }
 
   render(){
-    console.log("this.state:", this.state);
     return (
       <div>
         <h2>Play Your Cards Right</h2>
