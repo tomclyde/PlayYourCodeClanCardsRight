@@ -4,7 +4,8 @@ import GameBox from "../../containers/GameBox";
 const GameGrid = (props) => {
   console.log(props);
 
-  GameBox.drawCards();
+  return <h2>GameGrid</h2>
+
 }
 
 export default GameGrid;

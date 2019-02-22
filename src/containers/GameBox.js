@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import GameGrid from "../components/GameFlow/GameGrid";
 
 
@@ -11,7 +11,8 @@ class GameBox extends Component {
       player1cards: [],
       player2cards: []
     };
-    this.drawCard = this.drawCard.bind(this);
+    this.allocateCards = this.allocateCards.bind(this);
+    this.drawCards = this.drawCards.bind(this);
   }
 
   componentDidMount() {
@@ -21,48 +22,48 @@ class GameBox extends Component {
 
     request.addEventListener("load", () => {
       if (request.status !== 200) return;
-    const jsonString = request.responseText;
-    const data = JSON.parse(jsonString);
-    this.setState({deck: data })
- });
+      const jsonString = request.responseText;
+      const data = JSON.parse(jsonString);
+      this.setState({deck: data })
+    });
+    this.allocateCards();
+    request.send();
+  };
 
- request.send();
-};
+  drawCards() {
+    const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=5`;
+    const request = new XMLHttpRequest();
+    request.open('GET', url);
 
+    request.addEventListener("load", () => {
+      if (request.status !== 200) return;
+      const jsonString = request.responseText;
+      const data = JSON.parse(jsonString);
+      console.log(data);
+      return data;
+    });
+
+    request.send();
+    return data;
+  };
+
+  allocateCards() {
+    const p1Drawn = this.drawCards();
+    console.log("p1Drawn:", p1Drawn);
+    this.setState({player1cards: p1Drawn})
+    const p2Drawn = this.drawCards();
+    this.setState({player2cards: p2Drawn})
+  }
 
   render(){
-
+    console.log("this.state:", this.state);
     return (
       <div>
         <h2>Play Your Cards Right</h2>
-        <GameGrid player1={player1cards} player2={player2cards} />
+        <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
       </div>
     );
   }
-
-drawCards(deckid) {
-  console.log("DECKID IN DRAWCARD",deckid);
-  const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=5`;
-  const request = new XMLHttpRequest();
-  request.open('GET', url);
-
-  request.addEventListener("load", () => {
-    if (request.status !== 200) return;
-  const jsonString = request.responseText;
-  const data = JSON.parse(jsonString);
-  return;
-  // this.setState({cards: data})
-});
-
-request.send();
-};
-
-allocateCardsP1() {
-  const p1Drawn = drawCards();
-  this.setState({player1cards: p1Drawn})
-  const p2Drawn = drawCards();
-  this.setState({player2cards: p2Drawn})
-}
 
 };
 
