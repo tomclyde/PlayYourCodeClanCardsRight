@@ -33,7 +33,7 @@ class Gamebox extends Component {
 
     return (
       <div>
-        <h2>Play Your Cards Right</h2>
+        <h2>Play Your Cards Right3</h2>
         <GameGrid />
       </div>
     );
