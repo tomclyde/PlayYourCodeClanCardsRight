@@ -50,11 +50,19 @@ drawCards(deckid) {
     if (request.status !== 200) return;
   const jsonString = request.responseText;
   const data = JSON.parse(jsonString);
-  this.setState({card: data })
+  return;
+  // this.setState({cards: data})
 });
 
 request.send();
 };
+
+allocateCardsP1() {
+  const p1Drawn = drawCards();
+  this.setState({player1cards: p1Drawn})
+  const p2Drawn = drawCards();
+  this.setState({player2cards: p2Drawn})
+}
 
 };
 
