@@ -1,25 +1,26 @@
 import React from "react";
+import High_Low_Logic from '../models/high_low_logic.js';
 
 const GameUI = (props) => {
 
 
-  function checkNextHigher(handinfo) {
-    console.log("HANDINFO", handinfo);
-    if(!handinfo.player1.cards["0"].value)
-      return null;
-    else
-      {console.log("ACTUAL INFO", handinfo.player1.cards["0"].value)};
-      checkForFaceCardandConvert(card)
-      const p1card1val = parseInt(handinfo.player1.cards["0"].value)
-      const p1card2val = parseInt(handinfo.player1.cards["1"].value)
-      console.log("card compare vals", p1card1val, " ", p1card2val);
-      if(handinfo.player1.cards["0"].value <= handinfo.player1.cards["1"].value)
-        {console.log("It's not higher or it's equal")}
-      else {
-        {console.log("It is Higher");}
-
-      }
-  };
+  // function checkNextHigher(handinfo) {
+  //   console.log("HANDINFO", handinfo);
+  //   if(!handinfo.player1.cards["0"].value)
+  //     return null;
+  //   else
+  //     {console.log("ACTUAL INFO", handinfo.player1.cards["0"].value)};
+  //     checkForFaceCardandConvert(card)
+  //     const p1card1val = parseInt(handinfo.player1.cards["0"].value)
+  //     const p1card2val = parseInt(handinfo.player1.cards["1"].value)
+  //     console.log("card compare vals", p1card1val, " ", p1card2val);
+  //     if(handinfo.player1.cards["0"].value <= handinfo.player1.cards["1"].value)
+  //       {console.log("It's not higher or it's equal")}
+  //     else {
+  //       {console.log("It is Higher");}
+  //
+  //     }
+  // };
   console.log(props);
 
   function checkForFaceCardandConvert(card) {
