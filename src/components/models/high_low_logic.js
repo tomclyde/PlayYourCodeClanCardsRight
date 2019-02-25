@@ -1,10 +1,13 @@
-import React from 'react';
 
-const High_Low_Logic = () => {
+
+  // var currentCard = card1;
+  // var newCard = card2;
 
   const playerGuessHigh = function (newCard, currentCard){
     // // GUESSING HIGHER //
+    console.log("correct");
     return (newCard > currentCard);
+
   };
 
   const playerGuessLow = function (newCard, currentCard) {
@@ -26,6 +29,6 @@ const High_Low_Logic = () => {
         return card;
       }
     };
-};
 
-export default High_Low_Logic;
+
+export {playerGuessHigh,playerGuessLow};

@@ -1,15 +1,19 @@
 import React from "react";
 import './CSS/GameUI.css';
-import High_Low_Logic from '../models/high_low_logic.js';
+import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
 const GameUI = (props) => {
+  console.log(props);
+  if (props.player1.length === 0) return null; //add loading message
+  if (props.player2.length === 0) return null;
 
-  function playerGuessHigh(){
-    playerGuessHigh();//pass card value
+
+  function handleHighClick(card1, card2){
+    playerGuessHigh(card1, card2);//pass card value
   };
 
-  function playerGuessLow(){
-    playerGuessLow();// pass card value
+  function handleLowClick(){
+    // playerGuessLow();// pass card value
   };
 
   function handleFreezeClick(){
@@ -29,10 +33,10 @@ const GameUI = (props) => {
         </button>
       </div>
       <div className="buttons">
-      <button type="button" onClick={() => {playerGuessHigh()}}>
+      <button type="button" onClick={() => handleHighClick(props.player1.cards[0].value, props.player1.cards[1].value)}>
         Higher
       </button>
-      <button type="button" onClick={() => {playerGuessLow()}}>
+      <button type="button" onClick={() => {handleLowClick()}}>
         Lower
       </button>
       <button type="button" onClick={() => {handleFreezeClick()}}>
