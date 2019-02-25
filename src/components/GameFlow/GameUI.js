@@ -1,6 +1,6 @@
 import React from "react";
 import './CSS/GameUI.css';
-import High_Low_Logic from ""
+import High_Low_Logic from '../models/high_low_logic.js';
 
 const GameUI = (props) => {
 
