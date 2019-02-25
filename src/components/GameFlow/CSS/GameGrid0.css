@@ -1,0 +1,9 @@
+.card-gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.card-gallery-item{
+  width: 20%;
+  box-sizing: border-box;
+}
