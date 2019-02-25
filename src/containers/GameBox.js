@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from "react";
 
-
 class Gamebox extends Component {
 
   constructor(props){
@@ -20,40 +19,40 @@ class Gamebox extends Component {
 
     request.addEventListener("load", () => {
       if (request.status !== 200) return;
-    const jsonString = request.responseText;
-    const data = JSON.parse(jsonString);
-    this.setState({deck: data })
- });
+      const jsonString = request.responseText;
+      const data = JSON.parse(jsonString);
+      this.setState({deck: data })
+    });
 
- request.send();
-};
+    request.send();
+  };
 
 
   render(){
 
     return (
       <div>
-        <h2>Play Your Cards Right</h2>
-        <GameGrid />
+      <h2>Play Your Cards Right</h2>
+      <GameGrid />
       </div>
     );
   }
 
-drawCard(deckid) {
-  console.log("DECKID IN DRAWCARD",deckid);
-  const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=5`;
-  const request = new XMLHttpRequest();
-  request.open('GET', url);
+  drawCard(deckid) {
+    console.log("DECKID IN DRAWCARD",deckid);
+    const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=5`;
+    const request = new XMLHttpRequest();
+    request.open('GET', url);
 
-  request.addEventListener("load", () => {
-    if (request.status !== 200) return;
-  const jsonString = request.responseText;
-  const data = JSON.parse(jsonString);
-  this.setState({card: data })
-});
+    request.addEventListener("load", () => {
+      if (request.status !== 200) return;
+      const jsonString = request.responseText;
+      const data = JSON.parse(jsonString);
+      this.setState({card: data })
+    });
 
-request.send();
-};
+    request.send();
+  };
 
 };
 
