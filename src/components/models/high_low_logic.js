@@ -28,4 +28,4 @@ const High_Low_Logic = () => {
     };
 };
 
-export module = High_Low_Logic;
+export default High_Low_Logic;

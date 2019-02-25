@@ -13,7 +13,7 @@ const GameUI = (props) => {
   };
 
   function handleFreezeClick(){
-    
+
   };
 
   function handleNewClick(){
@@ -29,16 +29,16 @@ const GameUI = (props) => {
         </button>
       </div>
       <div className="buttons">
-      <button type="button" onclick={() => {playerGuessHigh()}}>
+      <button type="button" onClick={() => {playerGuessHigh()}}>
         Higher
       </button>
-      <button type="button" onclick={() => {playerGuessLow()}}>
+      <button type="button" onClick={() => {playerGuessLow()}}>
         Lower
       </button>
-      <button type="button" onclick={() => {handleFreezeClick()}}>
+      <button type="button" onClick={() => {handleFreezeClick()}}>
         Freeze
       </button>
-      <button type="button" onclick={() => {handleNewClick()}}>
+      <button type="button" onClick={() => {handleNewClick()}}>
         New
       </button>
       </div>
