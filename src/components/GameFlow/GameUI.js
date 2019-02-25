@@ -1,56 +1,61 @@
 import React from "react";
+import './CSS/GameUI.css';
+import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
 const GameUI = (props) => {
-
-
-  function checkNextHigher(handinfo) {
-    console.log("HANDINFO", handinfo);
-    if(!handinfo.player1.cards["0"].value)
-      return null;
-    else
-      {console.log("ACTUAL INFO", handinfo.player1.cards["0"].value)};
-      checkForFaceCardandConvert(card)
-      const p1card1val = parseInt(handinfo.player1.cards["0"].value)
-      const p1card2val = parseInt(handinfo.player1.cards["1"].value)
-      console.log("card compare vals", p1card1val, " ", p1card2val);
-      if(handinfo.player1.cards["0"].value <= handinfo.player1.cards["1"].value)
-        {console.log("It's not higher or it's equal")}
-      else {
-        {console.log("It is Higher");}
-
-      }
-  };
   console.log(props);
+  if (props.player1.length === 0) return null; //add loading message
+  if (props.player2.length === 0) return null;
 
-  function checkForFaceCardandConvert(card) {
-    if (card === "AD" || "AC" || "AH"  || "AS")
-      {
-        return 14
-      }
-      else if (card === "KD" || "KC"  || "KH" || "KS") {
-        return 13
-        else if (card === "QD" || "QC"  || "QH" || "QS") {
-          return 12
-          else if (card === "JD" || "JC"  || "JH" || "JS") {
-            return 11
-          }
-        }
-      }
+  function handleHighClick(card1, card2){
+    if (playerGuessHigh(card1, card2) && (props.player1.cardPosition < 4)) {
+      props.player1.cardPosition +=1;
+    } else {
+      props.player1.cardPosition = 0;
+    }
+    console.log(props.player1.cardPosition);
+  };
 
-  }
+  function handleLowClick(){
+    // playerGuessLow();// pass card value
+  };
 
-if (!props.handinfo) return null
+  function handleFreezeClick(){
+
+  };
+
+  function handleNewClick(){
+
+  };
 
   return (
-    <div>
-      <h2>Controls here</h2>
-      <button type="button" onclick={checkNextHigher(props.handinfo)}>
-      Higher</button>
+    <div className="ui-container">
+      <div className="player-info">
+        <h4>Player #</h4>
+        <button type="button">
+          Home
+        </button>
+      </div>
+      <div className="buttons">
+      <button type="button" onClick={() =>
+        handleHighClick(
+          props.player1.cards[props.player1.cardPosition].value,
+          props.player1.cards[(props.player1.cardPosition) + 1].value)}>
+        Higher
+      </button>
+      <button type="button" onClick={() => {handleLowClick()}}>
+        Lower
+      </button>
+      <button type="button" onClick={() => {handleFreezeClick()}}>
+        Freeze
+      </button>
+      <button type="button" onClick={() => {handleNewClick()}}>
+        New
+      </button>
+      </div>
     </div>
-);
+  );
 
-  };
-
-
+};
 
 export default GameUI;
