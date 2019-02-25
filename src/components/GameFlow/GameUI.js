@@ -4,11 +4,11 @@ import High_Low_Logic from ""
 
 const GameUI = (props) => {
 
-  function handleHighClick(){
+  function playerGuessHigh(){
 
   };
 
-  function handleLowClick(){
+  function playerGuessLow(){
 
   };
 
@@ -29,10 +29,10 @@ const GameUI = (props) => {
         </button>
       </div>
       <div className="buttons">
-      <button type="button" onclick={() => {handleHighClick()}}>
+      <button type="button" onclick={() => {playerGuessHigh()}}>
         Higher
       </button>
-      <button type="button" onclick={() => {handleLowClick()}}>
+      <button type="button" onclick={() => {playerGuessLow()}}>
         Lower
       </button>
       <button type="button" onclick={() => {handleFreezeClick()}}>
