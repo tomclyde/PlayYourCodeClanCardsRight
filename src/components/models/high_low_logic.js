@@ -3,27 +3,30 @@
   // var currentCard = card1;
   // var newCard = card2;
 
-  const playerGuessHigh = function (newCard, currentCard){
+  const playerGuessHigh = function (currentCard, newCard){
     // // GUESSING HIGHER //
-    console.log("correct");
+    currentCard = convertFaceCard(currentCard);
+    newCard = convertFaceCard(newCard);
+    console.log("New Card: ", newCard);
+    console.log("Current Card: ", currentCard);
     return (newCard > currentCard);
 
   };
 
-  const playerGuessLow = function (newCard, currentCard) {
+  const playerGuessLow = function (currentCard, newCard) {
     // GUESSING LOWER //
     return (newCard < currentCard);
   };
 
   function convertFaceCard(card) {
-    if (card === "AD" || "AC" || "AH"  || "AS")
+    if (card === "ACE")
       {
         return 14;
-      } else if (card === "KD" || "KC"  || "KH" || "KS") {
+      } else if (card === "KING") {
         return 13;
-      } else if (card === "QD" || "QC"  || "QH" || "QS") {
+      } else if (card === "QUEEN") {
         return 12;
-      } else if (card === "JD" || "JC"  || "JH" || "JS") {
+      } else if (card === "JACK") {
         return 11;
       } else {
         return card;

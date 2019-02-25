@@ -44,6 +44,7 @@ class GameBox extends Component {
       // could change to fetch
       obj[player] = data;
       this.setState(obj);
+      obj[player]["cardPosition"] = 0;
     });
 
     request.send();

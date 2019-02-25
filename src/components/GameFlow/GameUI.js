@@ -33,7 +33,10 @@ const GameUI = (props) => {
         </button>
       </div>
       <div className="buttons">
-      <button type="button" onClick={() => handleHighClick(props.player1.cards[0].value, props.player1.cards[1].value)}>
+      <button type="button" onClick={() =>
+        handleHighClick(
+          props.player1.cards[props.player1.cardPosition].value,
+          props.player1.cards[(props.player1.cardPosition) + 1].value)}>
         Higher
       </button>
       <button type="button" onClick={() => {handleLowClick()}}>
