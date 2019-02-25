@@ -7,9 +7,13 @@ const GameUI = (props) => {
   if (props.player1.length === 0) return null; //add loading message
   if (props.player2.length === 0) return null;
 
-
   function handleHighClick(card1, card2){
-    playerGuessHigh(card1, card2);//pass card value
+    if (playerGuessHigh(card1, card2) && (props.player1.cardPosition < 4)) {
+      props.player1.cardPosition +=1;
+    } else {
+      props.player1.cardPosition = 0;
+    }
+    console.log(props.player1.cardPosition);
   };
 
   function handleLowClick(){
