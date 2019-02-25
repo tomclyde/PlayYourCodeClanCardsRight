@@ -1,6 +1,7 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
+import GameGrid from '../components/GameFlow/GameGrid';
 
-class Gamebox extends Component {
+class GameBox extends Component {
 
   constructor(props){
     super(props);
@@ -31,7 +32,7 @@ class Gamebox extends Component {
   render(){
 
     return (
-      <div>
+      <div class="game-box">
         <h2>Play Your Cards Right</h2>
         <GameGrid />
       </div>
@@ -56,4 +57,4 @@ class Gamebox extends Component {
 
 };
 
-export default Gamebox;
+export default GameBox;
