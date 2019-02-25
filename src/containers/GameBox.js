@@ -36,6 +36,7 @@ class GameBox extends Component {
       <div className="game-box">
         <h2>Play Your Cards Right</h2>
         <GameGrid />
+        <GameUI />
       </div>
     );
   }
