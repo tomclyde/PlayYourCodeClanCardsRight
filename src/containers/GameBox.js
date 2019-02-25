@@ -43,6 +43,7 @@ class GameBox extends Component {
       // could change to fetch
       obj[player] = data;
       this.setState(obj);
+      obj[player]["cardPosition"] = 0;
     });
 
     request.send();
@@ -55,11 +56,11 @@ class GameBox extends Component {
 
   render(){
     return (
-      <div>
+      <div className="game-box">
         <h2 align="center">Play Your Cards Right</h2>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
         <div className="game-ui">
-          <GameUI />
+          <GameUI player1={this.state.player1cards} player2={this.state.player2cards}/>
         </div>
       </div>
     );
