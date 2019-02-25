@@ -1,11 +1,16 @@
-import React, {Component} from "react";
+import React from "react";
 
 const GameUI = (props) => {
+
   return (
-    <div className="game-ui">
-      <p>UI goes here</p>
+    <div>
+    <h2>Controls here</h2>
+      <button type="button" onclick={(props.handinfo)}>
+        Higher
+      </button>
     </div>
-  )
+  );
+
 };
 
 export default GameUI;
