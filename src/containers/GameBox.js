@@ -39,7 +39,6 @@ class GameBox extends Component {
       if (request.status !== 200) return;
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
-      console.log("data:", data);
       const obj = {};
       // could change to fetch
       obj[player] = data;
@@ -57,13 +56,8 @@ class GameBox extends Component {
   render(){
     return (
       <div>
-<<<<<<< HEAD
-        <h2>Play Your Cards Right 2</h2>
-        <GameGrid />
-=======
-        <h2>Play Your Cards Right</h2>
+        <h2 align="center">Play Your Cards Right</h2>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
->>>>>>> 27c54309a5c118146c4af4bb5b4345b420e1c0d8
       </div>
     );
   }
