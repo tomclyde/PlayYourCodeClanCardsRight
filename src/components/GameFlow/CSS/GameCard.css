@@ -1,0 +1,21 @@
+/*==========================MEDIA CARDS========================================== */
+img.resize {
+  max-width:150%;
+  max-height:150%;
+}
+
+.media-card {
+  margin-bottom: 0px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,10);
+  transition: 0.3s;
+  border-radius: 1px;
+}
+
+.media-card:hover span {
+  opacity: 1;
+}
+
+.media-card:hover {
+  box-shadow: 0 10px 19px 0 rgba(0,0,0,5);
+
+}

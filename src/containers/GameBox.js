@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import GameGrid from '../components/GameFlow/GameGrid';
-import GameUI from '../components/GameFlow/GameUI';
+import GameGrid from "../components/GameFlow/GameGrid";
+
 
 class GameBox extends Component {
 
@@ -11,7 +11,8 @@ class GameBox extends Component {
       player1cards: [],
       player2cards: []
     };
-    this.drawCard = this.drawCard.bind(this);
+    this.allocateCards = this.allocateCards.bind(this);
+    this.drawCards = this.drawCards.bind(this);
   }
 
   componentDidMount() {
@@ -25,24 +26,11 @@ class GameBox extends Component {
       const data = JSON.parse(jsonString);
       this.setState({deck: data })
     });
-
+    this.allocateCards();
     request.send();
   };
 
-
-  render(){
-
-    return (
-      <div className="game-box">
-        <h2>Play Your Cards Right</h2>
-        <GameGrid />
-        <GameUI />
-      </div>
-    );
-  }
-
-  drawCard(deckid) {
-    console.log("DECKID IN DRAWCARD",deckid);
+  drawCards(player) {
     const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=5`;
     const request = new XMLHttpRequest();
     request.open('GET', url);
@@ -51,11 +39,28 @@ class GameBox extends Component {
       if (request.status !== 200) return;
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
-      this.setState({card: data })
+      const obj = {};
+      // could change to fetch
+      obj[player] = data;
+      this.setState(obj);
     });
 
     request.send();
   };
+
+  allocateCards() {
+    const p1Drawn = this.drawCards("player1cards");
+    const p2Drawn = this.drawCards("player2cards");
+  }
+
+  render(){
+    return (
+      <div>
+        <h2 align="center">Play Your Cards Right</h2>
+        <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
+      </div>
+    );
+  }
 
 };
 

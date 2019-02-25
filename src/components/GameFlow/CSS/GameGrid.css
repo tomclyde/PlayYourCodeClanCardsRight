@@ -1,0 +1,16 @@
+.p1-card-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #2196F3;
+  padding: 10px;
+  border: 2px solid red;
+}
+
+.p2-card-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #2196F3;
+  padding: 10px;
+}
