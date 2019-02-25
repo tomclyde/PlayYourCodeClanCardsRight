@@ -37,12 +37,6 @@ const GameUI = (props) => {
         </button>
       </div>
       <div className="buttons">
-<<<<<<< HEAD
-      <button type="button" onClick={() => {playerGuessHigh()}}>
-        Higher
-      </button>
-      <button type="button" onClick={() => {playerGuessLow()}}>
-=======
       <button type="button" onClick={() =>
         handleHighClick(
           props.player1.cards[props.player1.cardPosition].value,
@@ -50,7 +44,6 @@ const GameUI = (props) => {
         Higher
       </button>
       <button type="button" onClick={() => {handleLowClick()}}>
->>>>>>> master
         Lower
       </button>
       <button type="button" onClick={() => {handleFreezeClick()}}>

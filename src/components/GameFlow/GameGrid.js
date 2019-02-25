@@ -5,18 +5,12 @@ import GameCard from "./GameCard";
 import './CSS/GameGrid.css';
 
 const GameGrid = (props) => {
-<<<<<<< HEAD
   // console.log(props);
   if (!props.player1.cards) return null;
 
   const p1cardNodes = props.player1.cards.map(card => {
     // console.log("cardvalue", card.value);
     // console.log("cardimage", card.image);
-=======
-  if (!props.player1.cards) return null;
-
-  const p1cardNodes = props.player1.cards.map(card => {
->>>>>>> master
     return(
       <GameCard key={props.player1.cards.indexOf(card)} value={card.value}
       image={card.image}>
