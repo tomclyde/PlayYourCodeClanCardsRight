@@ -3,21 +3,63 @@ import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
 const GameUI = (props) => {
-  console.log(props);
+  var playerParameter = "player1"
+
   if (props.player1.length === 0) return null; //add loading message
   if (props.player2.length === 0) return null;
 
+  var activePlayerCard = null
+  var NextActivePlayerCard = null
+
+
   function handleHighClick(card1, card2){
-    if (playerGuessHigh(card1, card2) && (props.player1.cardPosition < 4)) {
-      props.player1.cardPosition +=1;
-    } else {
-      props.player1.cardPosition = 0;
-    }
+
+    if (playerParameter === "player1")
+    {
+      if (playerGuessHigh(card1, card2) && (props.player1.cardPosition < 4)) {
+        props.player1.cardPosition +=1;
+      } else {
+        props.player1.cardPosition = 0;
+        handlePlayerChange();
+
+      }
     console.log(props.player1.cardPosition);
+    }
+    else
+    {
+      if (playerGuessHigh(card1, card2) && (props.player2.cardPosition < 4)) {
+        props.player2.cardPosition +=1;
+      } else {
+        props.player2.cardPosition = 0;
+        handlePlayerChange();
+
+      }
+    console.log(props.player2.cardPosition);
+    }
   };
 
-  function handleLowClick(){
-    // playerGuessLow();// pass card value
+  function handleLowClick(card1, card2){
+
+    if (playerParameter === "player1")
+    {
+      if (playerGuessLow(card1, card2) && (props.player1.cardPosition < 4)) {
+        props.player1.cardPosition +=1;
+      } else {
+        props.player1.cardPosition = 0;
+        handlePlayerChange();
+      }
+    console.log(props.player1.cardPosition);
+    }
+    else
+    {
+      if (playerGuessLow(card1, card2) && (props.player2.cardPosition < 4)) {
+        props.player2.cardPosition +=1;
+      } else {
+        props.player2.cardPosition = 0;
+        handlePlayerChange();
+      }
+    console.log(props.player2.cardPosition);
+    }
   };
 
   function handleFreezeClick(){
@@ -28,10 +70,31 @@ const GameUI = (props) => {
 
   };
 
+  function handlePlayerChange(){
+    if(playerParameter === "player1"){
+      playerParameter = "player2";
+    }
+    else{
+      playerParameter = "player1";
+    }
+
+    if(playerParameter === "player1"){
+      activePlayerCard = props.player1.cards[props.player1.cardPosition].value
+      NextActivePlayerCard = props.player1.cards[(props.player1.cardPosition) + 1].value
+    }
+    else {
+      if (playerParameter === "player2")
+      {
+        activePlayerCard = props.player2.cards[props.player2.cardPosition].value
+        NextActivePlayerCard = props.player2.cards[(props.player2.cardPosition) + 1].value
+      }
+    }
+  }
+
   return (
     <div className="ui-container">
       <div className="player-info">
-        <h4>Player #</h4>
+        <h4>{`${playerParameter}`}</h4>
         <button type="button">
           Home
         </button>
@@ -39,11 +102,14 @@ const GameUI = (props) => {
       <div className="buttons">
       <button type="button" onClick={() =>
         handleHighClick(
-          props.player1.cards[props.player1.cardPosition].value,
-          props.player1.cards[(props.player1.cardPosition) + 1].value)}>
+          activePlayerCard,
+          NextActivePlayerCard)}>
         Higher
       </button>
-      <button type="button" onClick={() => {handleLowClick()}}>
+      <button type="button" onClick={() =>
+        handleLowClick(
+          activePlayerCard,
+          NextActivePlayerCard)}>
         Lower
       </button>
       <button type="button" onClick={() => {handleFreezeClick()}}>

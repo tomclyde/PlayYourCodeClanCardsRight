@@ -1,8 +1,3 @@
-
-
-  // var currentCard = card1;
-  // var newCard = card2;
-
   const playerGuessHigh = function (currentCard, newCard){
     // // GUESSING HIGHER //
     currentCard = convertFaceCard(currentCard);
@@ -15,6 +10,10 @@
 
   const playerGuessLow = function (currentCard, newCard) {
     // GUESSING LOWER //
+    currentCard = convertFaceCard(currentCard);
+    newCard = convertFaceCard(newCard);
+    console.log("New Card: ", newCard);
+    console.log("Current Card: ", currentCard);
     return (newCard < currentCard);
   };
 
