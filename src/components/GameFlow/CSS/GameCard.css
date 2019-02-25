@@ -5,7 +5,6 @@ img.resize {
 }
 
 .media-card {
-  width: 6rem;
   margin-bottom: 0px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,10);
   transition: 0.3s;

@@ -1,7 +1,7 @@
 import React from "react";
 // import GameBox from "../../containers/GameBox";
 import GameCard from "./GameCard";
-import GameUI from "./GameUI";
+// import GameUI from "./GameUI";
 import './CSS/GameGrid.css';
 
 const GameGrid = (props) => {
@@ -9,8 +9,11 @@ const GameGrid = (props) => {
   if (!props.player1.cards) return null;
 
   const p1cardNodes = props.player1.cards.map(card => {
+    console.log("cardvalue", card.value);
+    console.log("cardimage", card.image);
       return(
-        <GameCard key={props.player1.cards.indexOf(card)} card={card}>
+        <GameCard key={props.player1.cards.indexOf(card)} value={card.value}
+        image={card.image}>
         </GameCard>
       );
     });
@@ -19,7 +22,8 @@ const GameGrid = (props) => {
 
   const p2cardNodes = props.player2.cards.map(card => {
       return(
-        <GameCard key={props.player2.cards.indexOf(card)} card={card}>
+        <GameCard key={props.player2.cards.indexOf(card)} value={card.value}
+        image={card.image}>
         </GameCard>
       );
     });
@@ -27,12 +31,12 @@ const GameGrid = (props) => {
 
   return (
     <div>
-      <div className="grid-container">
+        <div className="p1-card-row">
           {p1cardNodes}
+        </div>
+        <div className="p2-card-row">
           {p2cardNodes}
-      </div>
-
-      <GameUI handinfo={props}/>
+        </div>
     </div>
   );
 }

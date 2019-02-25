@@ -1,8 +1,16 @@
-.grid-container {
-  display: grid;
+.p1-card-row{
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
-  grid-template-columns: 50px 50px 50px 50px 50px; /*Make the grid smaller than the container*/
-  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+  border: 2px solid red;
+}
+
+.p2-card-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   background-color: #2196F3;
   padding: 10px;
 }
