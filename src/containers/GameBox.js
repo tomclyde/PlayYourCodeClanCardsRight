@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import GameGrid from '../components/GameFlow/GameGrid';
+import GameUI from '../components/GameFlow/GameUI';
 
 class GameBox extends Component {
 
@@ -32,7 +33,7 @@ class GameBox extends Component {
   render(){
 
     return (
-      <div class="game-box">
+      <div className="game-box">
         <h2>Play Your Cards Right</h2>
         <GameGrid />
       </div>
