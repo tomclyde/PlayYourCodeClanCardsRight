@@ -5,15 +5,15 @@ import High_Low_Logic from '../models/high_low_logic.js';
 const GameUI = (props) => {
 
   function playerGuessHigh(){
-
+    playerGuessHigh();//pass card value
   };
 
   function playerGuessLow(){
-
+    playerGuessLow();// pass card value
   };
 
   function handleFreezeClick(){
-
+    
   };
 
   function handleNewClick(){
