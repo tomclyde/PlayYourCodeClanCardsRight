@@ -11,10 +11,11 @@ class GameBox extends Component {
       deck: [],
       player1cards: [],
       player2cards: [],
-      currentPlayer: []
+      currentPlayer: 0
     };
     this.allocateCards = this.allocateCards.bind(this);
     this.drawCards = this.drawCards.bind(this);
+    this.handlePlayerChange = this.handlePlayerChange.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +57,17 @@ class GameBox extends Component {
     const p2Drawn = this.drawCards("player2cards");
   }
 
-  currentPlayer() {}
+  handlePlayerChange(){
+    console.log("changing in GameBox");
+    if(this.state.currentPlayer === 0){
+      this.setState({currentPlayer: 1 })
+      // console.log("after setState:",this.state.currentPlayer);
+    }
+    else {
+    this.setState({currentPlayer: 0 })
+    }
+    // console.log("currentPlayer:", this.state.currentPlayer);
+  }
 
   render(){
     return (
@@ -64,7 +75,7 @@ class GameBox extends Component {
         <h2 align="center">Play Your Cards Right</h2>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
         <div className="game-ui">
-          <GameUI players={[this.state.player1cards, this.state.player2cards]} currentPlayer={this.state.currentPlayers}/>
+          <GameUI players={[this.state.player1cards, this.state.player2cards]} activePlayer={this.state.currentPlayer} handlePlayerChange={this.handlePlayerChange}/>
         </div>
       </div>
     );

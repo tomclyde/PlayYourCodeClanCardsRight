@@ -15,7 +15,13 @@
 
   const playerGuessLow = function (currentCard, newCard) {
     // GUESSING LOWER //
+    currentCard = convertFaceCard(currentCard);
+    newCard = convertFaceCard(newCard);
+    console.log("New Card: ", newCard);
+    console.log("Current Card: ", currentCard);
     return (newCard < currentCard);
+
+
   };
 
   function convertFaceCard(card) {
