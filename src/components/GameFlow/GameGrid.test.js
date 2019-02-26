@@ -11,4 +11,5 @@ describe('GameGrid', () => {
   it("should render three <div>s", () => {
     expect(wrapper.find("div").length).toEqual(3);
   });
+
 });
