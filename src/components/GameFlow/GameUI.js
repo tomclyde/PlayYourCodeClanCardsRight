@@ -9,7 +9,13 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
 
   var currentPlayer=players[activePlayer]
   var playerName=activePlayer;
-
+  var playerNameLiteral = null;
+  if (playerName === 0){
+    playerNameLiteral = "Player 1";
+  }
+  else {
+    playerNameLiteral = "Player 2";
+  }
 
 
   function handleHighClick(card1, card2){
@@ -54,7 +60,7 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
   return (
     <div className="ui-container">
       <div className="player-info">
-        <h4 className="player-id">{playerName}</h4>
+        <h4 className="player-id">{playerNameLiteral}</h4>
         <button type="button">
           Home
         </button>
