@@ -12,12 +12,14 @@ function LoadingMessage() {
 }
 
 function handleSplashClick(){
-  return (
-    <App />
-  );
+  render() {
+    return(
+      <App />
+    );
+  };
 };
 
-function withSplashPage(App){
+function withSplashPage(WrappedComponent){
   return class extends Component {
     constructor(props) {
       super(props);
