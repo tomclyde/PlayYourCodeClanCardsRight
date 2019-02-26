@@ -8,8 +8,8 @@ const GameUI = (props) => {
   if (props.player1.length === 0) return null; //add loading message
   if (props.player2.length === 0) return null;
 
-  var activePlayerCard = null
-  var NextActivePlayerCard = null
+  var activePlayerCard = props.player1.cards[props.player1.cardPosition].value;
+  var NextActivePlayerCard = props.player1.cards[(props.player1.cardPosition) + 1].value;
 
 
   function handleHighClick(card1, card2){
