@@ -2,20 +2,14 @@ import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
-const GameUI = ({players, activePlayer, handlePlayerChange}) => {
+const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, newCard}) => {
 
   if (players.length === 0) return null; //add loading message
 
 
-var currentPlayer=players[activePlayer]
-var playerName=activePlayer;
+  var currentPlayer=players[activePlayer]
+  var playerName=activePlayer;
 
-
-
-  const newCardOption = true;
-
-  var activePlayerCard = props.player1.cards[props.player1.cardPosition].value;
-  var NextActivePlayerCard = props.player1.cards[(props.player1.cardPosition) + 1].value;
 
 
   function handleHighClick(card1, card2){
@@ -23,10 +17,8 @@ var playerName=activePlayer;
       currentPlayer.cardPosition +=1;
     } else {
       currentPlayer.cardPosition = 0;
-      console.log("changing from UI");
       handlePlayerChange();
     }
-    // console.log(currentPlayer.cardPosition);
   };
 
   function handleLowClick(card1, card2){
@@ -34,11 +26,8 @@ var playerName=activePlayer;
       currentPlayer.cardPosition +=1;
     } else {
       currentPlayer.cardPosition = 0;
-      // console.log(currentPlayer);
-      console.log("changing from UI");
       handlePlayerChange();
     }
-    // console.log(currentPlayer.cardPosition);
   };
 
   function handleFreezeClick(){
@@ -46,18 +35,21 @@ var playerName=activePlayer;
   };
 
   function handleNewClick(){
-    // To create new API draw one card but cannot yet access.
+    if(currentPlayer.cardPosition === 0)
+      {
+        if (currentPlayer.newCardOption)
+        {
+        allocateNewCard();
+        if (!newCard.cards) return null;
+        currentPlayer.cards["0"] = newCard.cards["0"];
+        currentPlayer.newCardOption = false;
+        }
+        else {
+          alert("New Card Option Already Used")
+        }
+      }
   };
 
-  // function handlePlayerChange(){
-  //   if(currentPlayer === players[0]){
-  //     currentPlayer=players[1];
-  //     //playerName = "Player 2"
-  //     //console.log(playerName);
-  //   }
-  //   else currentPlayer=players[0];
-  //   //playerName = "Player 1"
-  // }
 
   return (
     <div className="ui-container">
