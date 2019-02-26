@@ -1,6 +1,5 @@
 import React from 'react';
 import GameGrid from './GameGrid';
-import GameRow from './GameRow';
 import GameCard from './GameCard';
 import { shallow } from 'enzyme';
 
