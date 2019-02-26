@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import GameGrid from "../components/GameFlow/GameGrid";
 import GameUI from "../components/GameFlow/GameUI";
 
-
 class GameBox extends Component {
 
   constructor(props){

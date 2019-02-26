@@ -1,9 +1,9 @@
 .splash-page {
-  background-image: url("/images/play-cards-right.jpg");
+  background-image: url("./CSS/images/splash.jpg");
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
-  background-position:top;
+  background-size: cover;
 }
 
 .splash-screen {
@@ -18,7 +18,28 @@
 .splash-button {
   display: flex;
   flex-direction: row;
-  margin: auto;
-  
   align-items: center;
+}
+
+.splash-screen .loading-dot {
+  font-size: 100px;
+  margin-top: -80px;
+  position: relative;
+  animation: ease-in-out infinite alternate;
+  animation-name: run;
+  animation-duration: 1.2s;
+}
+
+@keyframes run {
+  0% {
+    left: -90px;
+    color: #eee;
+  }
+  50% {
+    color: #666;
+  }
+  100% {
+    left: 90px;
+    color: #eee;
+  }
 }
