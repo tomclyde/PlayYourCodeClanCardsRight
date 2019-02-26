@@ -27,7 +27,7 @@ const GameUI = (props) => {
   };
 
   function handleNewClick(){
-
+    // To create new API draw one card but cannot yet access.
   };
 
   return (

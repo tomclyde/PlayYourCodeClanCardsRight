@@ -50,6 +50,9 @@ class GameBox extends Component {
     request.send();
   };
 
+  // Add drawNewCard function perhaps similar to above ending the url in '1'.
+  // To be accessed from GameUI.js
+
   allocateCards() {
     const p1Drawn = this.drawCards("player1cards");
     const p2Drawn = this.drawCards("player2cards");
