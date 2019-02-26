@@ -74,7 +74,7 @@ class GameBox extends Component {
   render(){
     return (
       <div className="game-box">
-        <h1 align="center">PLAY YOUR CARDS RIGHT</h1>  {/* Changed to uppercase & h2 to h1 (new font) - SR */}
+        <h1 align="center">PLAY YOUR CARDS RIGHT</h1>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
         <div className="game-ui">
           <GameUI players={[this.state.player1cards, this.state.player2cards]} activePlayer={this.state.currentPlayer} handlePlayerChange={this.handlePlayerChange}/>
