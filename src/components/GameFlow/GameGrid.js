@@ -5,8 +5,8 @@ import GameCard from "./GameCard";
 import './CSS/GameGrid.css';
 
 const GameGrid = (props) => {
-  // console.log(props);
-  if (!props.player1.cards) return null;
+  console.log("GameGrid:", props.player1.cards);
+  if (props.player1.cards.length === 0) return null;
 
   const p1cardNodes = props.player1.cards.map(card => {
     // console.log("cardvalue", card.value);
@@ -18,7 +18,7 @@ const GameGrid = (props) => {
     );
   });
 
-  if (!props.player2.cards) return null;
+  if (props.player2.cards.length === 0) return null;
 
   const p2cardNodes = props.player2.cards.map(card => {
     return(
@@ -28,15 +28,14 @@ const GameGrid = (props) => {
     );
   });
 
-
   return (
-    <div>
-    <div className="p1-card-row">
-    {p1cardNodes}
-    </div>
-    <div className="p2-card-row">
-    {p2cardNodes}
-    </div>
+    <div className="game-grid">
+      <div className="p1-card-row">
+        {p1cardNodes}
+      </div>
+      <div className="p2-card-row">
+        {p2cardNodes}
+      </div>
     </div>
   );
 }

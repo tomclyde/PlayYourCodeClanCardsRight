@@ -7,7 +7,7 @@ describe('GameCard', () => {
 
   beforeEach(() => wrapper = shallow(<GameCard />));
 
-  it("should render a <div>", () => {
+  it("should render two <div>s", () => {
     expect(wrapper.find("div").length).toEqual(2);
   });
 
