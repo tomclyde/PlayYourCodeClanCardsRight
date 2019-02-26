@@ -10,7 +10,8 @@ class GameBox extends Component {
     this.state = {
       deck: [],
       player1cards: [],
-      player2cards: []
+      player2cards: [],
+      currentPlayer: []
     };
     this.allocateCards = this.allocateCards.bind(this);
     this.drawCards = this.drawCards.bind(this);
@@ -55,13 +56,15 @@ class GameBox extends Component {
     const p2Drawn = this.drawCards("player2cards");
   }
 
+  currentPlayer() {}
+
   render(){
     return (
       <div className="game-box">
         <h2 align="center">Play Your Cards Right</h2>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
         <div className="game-ui">
-          <GameUI player1={this.state.player1cards} player2={this.state.player2cards}/>
+          <GameUI players={[this.state.player1cards, this.state.player2cards]} currentPlayer={this.state.currentPlayers}/>
         </div>
       </div>
     );

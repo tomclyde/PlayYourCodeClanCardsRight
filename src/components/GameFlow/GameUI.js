@@ -2,22 +2,33 @@ import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
-const GameUI = (props) => {
-  console.log(props);
-  if (props.player1.length === 0) return null; //add loading message
-  if (props.player2.length === 0) return null;
+const GameUI = ({players}) => {
+  console.log(players);
+  if (players.length === 0) return null; //add loading message
+
+
+var currentPlayer=players[0]
+
+
 
   function handleHighClick(card1, card2){
-    if (playerGuessHigh(card1, card2) && (props.player1.cardPosition < 4)) {
-      props.player1.cardPosition +=1;
+    if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
+      currentPlayer.cardPosition +=1;
     } else {
-      props.player1.cardPosition = 0;
+      currentPlayer.cardPosition = 0;
+      handlePlayerChange();
     }
-    console.log(props.player1.cardPosition);
+    console.log(currentPlayer.cardPosition);
   };
 
-  function handleLowClick(){
-    // playerGuessLow();// pass card value
+  function handleLowClick(card1, card2){
+    if (playerGuessLow(card1, card2) && (currentPlayer.cardPosition < 4)) {
+      currentPlayer.cardPosition +=1;
+    } else {
+      currentPlayer.cardPosition = 0;
+      handlePlayerChange();
+    }
+    console.log(currentPlayer.cardPosition);
   };
 
   function handleFreezeClick(){
@@ -28,10 +39,20 @@ const GameUI = (props) => {
 
   };
 
+  function handlePlayerChange(){
+    if(currentPlayer === players[0]){
+      currentPlayer=players[1];
+      //playerName = "Player 2"
+      //console.log(playerName);
+    }
+    else currentPlayer=players[0];
+    //playerName = "Player 1"
+  }
+
   return (
     <div className="ui-container">
       <div className="player-info">
-        <h4>Player #</h4>
+        <h4 className="player-id">player #</h4>
         <button type="button">
           Home
         </button>
@@ -39,11 +60,13 @@ const GameUI = (props) => {
       <div className="buttons">
       <button type="button" onClick={() =>
         handleHighClick(
-          props.player1.cards[props.player1.cardPosition].value,
-          props.player1.cards[(props.player1.cardPosition) + 1].value)}>
+          currentPlayer.cards[currentPlayer.cardPosition].value,
+          currentPlayer.cards[(currentPlayer.cardPosition) + 1].value)}>
         Higher
       </button>
-      <button type="button" onClick={() => {handleLowClick()}}>
+      <button type="button" onClick={() => {handleLowClick(
+        currentPlayer.cards[currentPlayer.cardPosition].value,
+        currentPlayer.cards[(currentPlayer.cardPosition) + 1].value)}}>
         Lower
       </button>
       <button type="button" onClick={() => {handleFreezeClick()}}>
