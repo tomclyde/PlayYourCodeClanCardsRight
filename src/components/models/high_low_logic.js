@@ -30,7 +30,7 @@
       } else if (card === "JACK") {
         return 11;
       } else {
-        return card;
+        return Number(card);
       }
     };
 

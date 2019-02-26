@@ -21,19 +21,27 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
   function handleHighClick(card1, card2){
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
-    } else {
-      currentPlayer.cardPosition = 0;
-      handlePlayerChange();
+      if(currentPlayer.cardPosition === 4){
+        gameOver();
+      }
     }
+    else {
+          currentPlayer.cardPosition = 0;
+          handlePlayerChange();
+          }
   };
 
   function handleLowClick(card1, card2){
     if (playerGuessLow(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
-    } else {
-      currentPlayer.cardPosition = 0;
-      handlePlayerChange();
+      if(currentPlayer.cardPosition === 4){
+        gameOver();
+      }
     }
+    else {
+          currentPlayer.cardPosition = 0;
+          handlePlayerChange();
+          }
   };
 
   function handleFreezeClick(){
@@ -55,6 +63,14 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
         }
       }
   };
+
+  function gameOver(){
+    alert(`${playerNameLiteral} Wins!!!!!`)
+    players[0].newCardOption = true;
+    players[1].newCardOption = true;
+    players[0].cardPosition = 0;
+    players[1].cardPosition = 0;
+  }
 
 
   return (
