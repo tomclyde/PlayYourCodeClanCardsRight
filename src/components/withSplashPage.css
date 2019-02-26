@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* .splash-page {
   background-image: url("/images/play-cards-right.jpg");
   width: auto;
@@ -5,6 +6,15 @@
   background-repeat: no-repeat;
   background-position:center;
 } */
+=======
+.splash-page {
+  background-image: url("./CSS/images/splash.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+>>>>>>> aa62e8350d5160214d97d92110b68bb33908c010
 
 body {
   background-image: url("/images/play-cards-right.jpg");
@@ -23,6 +33,33 @@ body {
   display:flex;
   flex-wrap: nowrap;
   flex-direction: row;
+<<<<<<< HEAD
   align-content: center;
   /* align-items: center; */
+=======
+  align-items: center;
+>>>>>>> aa62e8350d5160214d97d92110b68bb33908c010
+}
+
+.splash-screen .loading-dot {
+  font-size: 100px;
+  margin-top: -80px;
+  position: relative;
+  animation: ease-in-out infinite alternate;
+  animation-name: run;
+  animation-duration: 1.2s;
+}
+
+@keyframes run {
+  0% {
+    left: -90px;
+    color: #eee;
+  }
+  50% {
+    color: #666;
+  }
+  100% {
+    left: 90px;
+    color: #eee;
+  }
 }

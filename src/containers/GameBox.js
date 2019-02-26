@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import GameGrid from "../components/GameFlow/GameGrid";
 import GameUI from "../components/GameFlow/GameUI";
 
-
 class GameBox extends Component {
 
   constructor(props){
@@ -11,9 +10,11 @@ class GameBox extends Component {
       deck: [],
       player1cards: [],
       player2cards: [],
+      currentPlayer: 0
     };
     this.allocateCards = this.allocateCards.bind(this);
     this.drawCards = this.drawCards.bind(this);
+    this.handlePlayerChange = this.handlePlayerChange.bind(this);
   }
 
   componentDidMount() {
@@ -58,13 +59,25 @@ class GameBox extends Component {
     const p2Drawn = this.drawCards("player2cards");
   };
 
+  handlePlayerChange(){
+    console.log("changing in GameBox");
+    if(this.state.currentPlayer === 0){
+      this.setState({currentPlayer: 1 })
+      // console.log("after setState:",this.state.currentPlayer);
+    }
+    else {
+    this.setState({currentPlayer: 0 })
+    }
+    // console.log("currentPlayer:", this.state.currentPlayer);
+  }
+
   render(){
     return (
       <div className="game-box">
-        <h1 align="center">PLAY YOUR CARDS RIGHT</h1>  {/* Changed to uppercase & h2 to h1 (new font) - SR */}
+        <h1 align="center">PLAY YOUR CARDS RIGHT</h1>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
         <div className="game-ui">
-          <GameUI player1={this.state.player1cards} player2={this.state.player2cards}/>
+          <GameUI players={[this.state.player1cards, this.state.player2cards]} activePlayer={this.state.currentPlayer} handlePlayerChange={this.handlePlayerChange}/>
         </div>
       </div>
     );
