@@ -1,44 +1,19 @@
-<<<<<<< HEAD
-/* .splash-page {
+
+.splash-page {
   background-image: url("/images/play-cards-right.jpg");
   width: auto;
-  height: auto;
+  height: 75vh;
   background-repeat: no-repeat;
   background-position:center;
-} */
-=======
-.splash-page {
-  background-image: url("./CSS/images/splash.jpg");
-  width: 100vw;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
->>>>>>> aa62e8350d5160214d97d92110b68bb33908c010
-
-body {
-  background-image: url("/images/play-cards-right.jpg");
-  background-size:1000px;
-  background-repeat: no-repeat;
-  background-position:center top;
 }
 
-/* button {
-  display:flex;
-  flex-direction: row;
-  align-items: baseline;
-} */
 
 .splash-buttons {
   display:flex;
   flex-wrap: nowrap;
   flex-direction: row;
-<<<<<<< HEAD
   align-content: center;
-  /* align-items: center; */
-=======
-  align-items: center;
->>>>>>> aa62e8350d5160214d97d92110b68bb33908c010
+
 }
 
 .splash-screen .loading-dot {

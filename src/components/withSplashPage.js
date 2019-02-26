@@ -29,7 +29,7 @@ class WithSplashPage extends Component {
   render() {
     if (this.state.status === "splashPage") {
     return (
-      <div className="splash-buttons">
+      <div className="splash-page">
 
         <div>
           <button type="button" onClick={this.handlePlayClick}>
