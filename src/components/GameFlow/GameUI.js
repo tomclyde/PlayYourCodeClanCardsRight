@@ -22,6 +22,7 @@ var playerName=activePlayer;
       console.log("changing from UI");
       handlePlayerChange();
     }
+    //document.querySelector(".flipper").classList.toggle("flip");//code for activating the flip from onClick
     // console.log(currentPlayer.cardPosition);
   };
 
