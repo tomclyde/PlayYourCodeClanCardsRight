@@ -59,9 +59,9 @@ var playerName=activePlayer;
     <div className="ui-container">
       <div className="player-info">
         <h4 className="player-id">{playerName}</h4>
-        <button type="button">
+        <button type="button"><span>
           Home
-        </button>
+        </span></button>
       </div>
       <div className="buttons">
       <button type="button" onClick={() =>

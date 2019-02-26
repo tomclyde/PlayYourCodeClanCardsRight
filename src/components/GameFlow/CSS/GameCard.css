@@ -1,10 +1,6 @@
 /*==========================MEDIA CARDS========================================== */
-img.resize {
-  max-width:150%;
-  height:auto;
-}
-
 .media-card {
+  display: flex;
   margin-bottom: 0px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,10);
   transition: 0.3s;
@@ -17,5 +13,32 @@ img.resize {
 
 .media-card:hover {
   box-shadow: 0 10px 19px 0 rgba(0,0,0,5);
+}
 
+
+
+img{
+  display: flex;
+  width:15rem;
+  height:auto;
+}
+
+.card-image {
+  background: "images/playing-card-back.png"
+}
+
+
+/*=============Media Queries===========*/
+
+@media (max-width: 1200px) {
+  img{
+    width:10rem;
+  }
+}
+
+
+@media (max-width: 640px){
+  img{
+    width:6rem;
+  }
 }
