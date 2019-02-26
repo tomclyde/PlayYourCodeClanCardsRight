@@ -15,6 +15,8 @@
     console.log("New Card: ", newCard);
     console.log("Current Card: ", currentCard);
     return (newCard < currentCard);
+
+
   };
 
   function convertFaceCard(card) {

@@ -1,7 +1,7 @@
 /*==========================MEDIA CARDS========================================== */
 img.resize {
   max-width:150%;
-  max-height:150%;
+  height:auto;
 }
 
 .media-card {

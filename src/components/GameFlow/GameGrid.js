@@ -8,6 +8,8 @@ const GameGrid = (props) => {
   if (!props.player1.cards) return null;
 
   const p1cardNodes = props.player1.cards.map(card => {
+    // console.log("cardvalue", card.value);
+    // console.log("cardimage", card.image);
     return(
       <GameCard key={props.player1.cards.indexOf(card)} value={card.value}
       image={card.image}>
@@ -25,15 +27,14 @@ const GameGrid = (props) => {
     );
   });
 
-
   return (
-    <div>
-    <div className="p1-card-row">
-    {p1cardNodes}
-    </div>
-    <div className="p2-card-row">
-    {p2cardNodes}
-    </div>
+    <div className="game-grid">
+      <div className="p1-card-row">
+        {p1cardNodes}
+      </div>
+      <div className="p2-card-row">
+        {p2cardNodes}
+      </div>
     </div>
   );
 }
