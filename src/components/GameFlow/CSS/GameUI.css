@@ -24,6 +24,7 @@
 
 .player-info button:hover span{
   display:none;
+  box-shadow: 0 10px 19px 0 rgba(0,0,0,5);
 }
 .player-info button:hover:before {
   content:"Exit Game";
