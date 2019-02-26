@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import GameGrid from "../components/GameFlow/GameGrid";
 import GameUI from "../components/GameFlow/GameUI";
-import SplashPage from "../components/SplashPage";
+
 
 class GameBox extends Component {
 
@@ -58,7 +58,6 @@ class GameBox extends Component {
   render(){
     return (
       <div className="game-box">
-      <SplashPage />
         <h2 align="center">Play Your Cards Right</h2>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
         <div className="game-ui">
