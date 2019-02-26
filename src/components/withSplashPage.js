@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import GameBox from '../containers/GameBox';
+import App from '../App';
+import "./withSplashPage.css";
 
 function LoadingMessage() {
   return (
@@ -10,7 +11,13 @@ function LoadingMessage() {
   );
 }
 
-function withSplashPage(GameBox) {
+function handleSplashClick(){
+  return (
+    <App />
+  );
+};
+
+function withSplashPage((App)=>{
   return class extends Component {
     constructor(props) {
       super(props);
@@ -21,7 +28,7 @@ function withSplashPage(GameBox) {
 
     async componentDidMount() {
       try {
-        await GameBox.loadSession();
+        await App.loadSession();
         setTimeout(() => {
           this.setState({
             loading: false,
@@ -42,7 +49,7 @@ function withSplashPage(GameBox) {
       // otherwise, show the desired route
       return (
         <div className="splash-page">
-          <button type="button" onClick={() => {<GameBox />}} className="splash-button">
+          <button type="button" onClick={() => {handleSplashClick()}} className="splash-button">
             Play!
           </button>
         </div>
