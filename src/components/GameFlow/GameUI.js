@@ -1,7 +1,6 @@
 import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
-
 const GameUI = ({players, activePlayer, handlePlayerChange}) => {
 
   if (players.length === 0) return null; //add loading message
@@ -10,9 +9,9 @@ const GameUI = ({players, activePlayer, handlePlayerChange}) => {
 var currentPlayer=players[activePlayer]
 var playerName=activePlayer;
 
+var availableFreeze = true; // Only one FREEZE option permitted each game per player
 
-
-  const newCardOption = true;
+const newCardOption = true;
 
   function handleHighClick(card1, card2){
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
@@ -38,8 +37,18 @@ var playerName=activePlayer;
   };
 
   function handleFreezeClick(){
+    console.log("FREEZE CHECK: ", currentPlayer.cardPosition);
+    if (!currentPlayer.cardPosition > 0) {
+      alert("FREEZE option not permitted on 1st card!");
+      return;
+    } else if (!availableFreeze) {
+      alert("Only one FREEZE option per player per game!");
+    };
+    availableFreeze = false;
+    console.log(currentPlayer.cards[currentPlayer.cardPosition].image);
 
   };
+
 
   function handleNewClick(){
     // To create new API draw one card but cannot yet access.
