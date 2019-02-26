@@ -52,10 +52,13 @@ class GameBox extends Component {
     request.send();
   };
 
+  // Add drawNewCard function perhaps similar to above ending the url in '1'.
+  // To be accessed from GameUI.js
+
   allocateCards() {
     const p1Drawn = this.drawCards("player1cards");
     const p2Drawn = this.drawCards("player2cards");
-  }
+  };
 
   handlePlayerChange(){
     console.log("changing in GameBox");
@@ -72,14 +75,14 @@ class GameBox extends Component {
   render(){
     return (
       <div className="game-box">
-        <h2 align="center">Play Your Cards Right</h2>
+        <h1 align="center">PLAY YOUR CARDS RIGHT</h1>  {/* Changed to uppercase & h2 to h1 (new font) - SR */}
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
         <div className="game-ui">
           <GameUI players={[this.state.player1cards, this.state.player2cards]} activePlayer={this.state.currentPlayer} handlePlayerChange={this.handlePlayerChange}/>
         </div>
       </div>
     );
-  }
+  };
 
 };
 
