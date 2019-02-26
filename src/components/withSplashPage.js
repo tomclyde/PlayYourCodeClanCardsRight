@@ -17,7 +17,7 @@ function handleSplashClick(){
   );
 };
 
-function withSplashPage((App)=>{
+function withSplashPage(App){
   return class extends Component {
     constructor(props) {
       super(props);
