@@ -1,7 +1,7 @@
 import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
-const GameUI = ({players, activePlayer, handlePlayerChange}) => {
+const GameUI = ({players, activePlayer, handlePlayerChange, handleFreeze}) => {
 
   if (players.length === 0) return null; //add loading message
 
@@ -37,20 +37,28 @@ const newCardOption = true;
   };
 
   function handleFreezeClick(){
-    console.log("FREEZE CHECK: ", currentPlayer.cardPosition);
     if (!currentPlayer.cardPosition > 0) {
       alert("FREEZE option not permitted on 1st card!");
-      return;
     } else if (!availableFreeze) {
       alert("Only one FREEZE option per player per game!");
-    };
+    } else {
     availableFreeze = false;
-    console.log(currentPlayer.cards[currentPlayer.cardPosition].image);
 
+    // for (var i = 0; i < currentPlayer.cardPosition; i++) {
+    //   currentPlayer.cards[currentPlayer.i].image = "images/playing-card-back.png";
+    // };
+    // console.log(currentPlayer.cards[currentPlayer.cardPosition].image);
+    }
+    //unsure how to actually SHOW this via RENDER
+    currentPlayer.cards[currentPlayer.cardPosition].image = "images/playing-card-back.png";
+    console.log(currentPlayer.cards[currentPlayer.cardPosition].image);
+    console.log("FREEZE CHECK: ", currentPlayer.cardPosition);
+    handleFreeze();
   };
 
 
   function handleNewClick(){
+    return
     // To create new API draw one card but cannot yet access.
   };
 
@@ -73,8 +81,7 @@ const newCardOption = true;
         </button>
       </div>
       <div className="buttons">
-      <button type="button" onClick={() =>
-        handleHighClick(
+      <button type="button" onClick={() =>handleHighClick(
           currentPlayer.cards[currentPlayer.cardPosition].value,
           currentPlayer.cards[(currentPlayer.cardPosition) + 1].value)}>
         Higher
@@ -84,7 +91,8 @@ const newCardOption = true;
         currentPlayer.cards[(currentPlayer.cardPosition) + 1].value)}}>
         Lower
       </button>
-      <button type="button" onClick={() => {handleFreezeClick()}}>
+      <button type="button" onClick={() => {handleFreezeClick(
+        currentPlayer.cards[currentPlayer.cardPosition].image)}}>
         Freeze
       </button>
       <button type="button" onClick={() => {handleNewClick()}}>

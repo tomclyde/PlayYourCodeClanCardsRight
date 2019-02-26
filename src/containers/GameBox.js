@@ -15,6 +15,7 @@ class GameBox extends Component {
     this.allocateCards = this.allocateCards.bind(this);
     this.drawCards = this.drawCards.bind(this);
     this.handlePlayerChange = this.handlePlayerChange.bind(this);
+    this.handleFreeze = this.handleFreeze.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +70,13 @@ class GameBox extends Component {
     this.setState({currentPlayer: 0 })
     }
     // console.log("currentPlayer:", this.state.currentPlayer);
-  }
+  };
+
+  handleFreeze(){
+    console.log("handling the FREEZE");
+    //THIS IS WHERE THE SET STATE NEEDS TO HAPPEN BUT THE CARD DETAILS ARE NOT DEFINED IN STATE
+    // console.log(this.state.currentPlayer.cards);
+  };
 
   render(){
     return (
@@ -77,7 +84,11 @@ class GameBox extends Component {
         <h1 align="center">PLAY YOUR CARDS RIGHT</h1>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
         <div className="game-ui">
-          <GameUI players={[this.state.player1cards, this.state.player2cards]} activePlayer={this.state.currentPlayer} handlePlayerChange={this.handlePlayerChange}/>
+          <GameUI players={
+            [this.state.player1cards, this.state.player2cards]}
+            activePlayer={this.state.currentPlayer}
+            handlePlayerChange={this.handlePlayerChange}
+            handleFreeze={this.handleFreeze}/>
         </div>
       </div>
     );
