@@ -11,6 +11,8 @@ var currentPlayer=players[0]
 
 
 
+  const newCardOption = true;
+
   function handleHighClick(card1, card2){
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
@@ -36,7 +38,7 @@ var currentPlayer=players[0]
   };
 
   function handleNewClick(){
-
+    // To create new API draw one card but cannot yet access.
   };
 
   function handlePlayerChange(){
