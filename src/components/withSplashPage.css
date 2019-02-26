@@ -1,24 +1,28 @@
-.splash-page {
+/* .splash-page {
   background-image: url("/images/play-cards-right.jpg");
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  height: auto;
   background-repeat: no-repeat;
-  background-position:top;
+  background-position:center;
+} */
+
+body {
+  background-image: url("/images/play-cards-right.jpg");
+  background-size:1000px;
+  background-repeat: no-repeat;
+  background-position:center top;
 }
 
-.splash-screen {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.splash-button {
-  display: flex;
+/* button {
+  display:flex;
   flex-direction: row;
-  margin: auto;
-  
-  align-items: center;
+  align-items: baseline;
+} */
+
+.splash-buttons {
+  display:flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: center;
+  /* align-items: center; */
 }
