@@ -45,11 +45,10 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
 
   function handleFreezeClick(){
     if (!currentPlayer.cardPosition > 0) {
-
       document.getElementById("noFreeze").showModal();
       return null;
     } else if (!currentPlayer.availableFreeze) {
-      document.getElementById("myDialog").showModal();
+      document.getElementById("moreThanOnce").showModal();
       return null;
     } else
     {
@@ -122,6 +121,7 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
       </div>
       <dialog id="winModal">{`${playerNameLiteral} Wins!!!!!`}</dialog>
       <dialog id="noFreeze">FREEZE option not permitted on 1st card!</dialog>
+      <dialog id="moreThanOnce">Only ONE freeze permitted per player in each game!</dialog>
     </div>
   );
 
