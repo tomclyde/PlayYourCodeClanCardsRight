@@ -1,3 +1,10 @@
+.game-grid {
+  display: flex;
+  flex-flow: wrap;
+  height: 1200px;
+}
+
+
 .p1-card-row{
   display: flex;
   flex-direction: row;

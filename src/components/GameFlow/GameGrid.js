@@ -23,23 +23,20 @@ const GameGrid = (props) => {
   const p2cardNodes = props.player2.cards.map(card => {
     return(
       <GameCard key={props.player2.cards.indexOf(card)} value={card.value}
-      image={card.image}>
+      image={card.image} flipped={card.flipped}>
       </GameCard>
     );
   });
 
 
-  
-
-
   return (
-    <div>
-    <div className="p1-card-row">
-    {p1cardNodes}
-    </div>
-    <div className="p2-card-row">
-    {p2cardNodes}
-    </div>
+    <div className="game-grid">
+      <div className="p1-card-row">
+        {p1cardNodes}
+      </div>
+      <div className="p2-card-row">
+        {p2cardNodes}
+      </div>
     </div>
   );
 }

@@ -7,10 +7,8 @@ const GameUI = ({players, activePlayer, handlePlayerChange}) => {
   if (players.length === 0) return null; //add loading message
 
 
-var currentPlayer=players[activePlayer]
-var playerName=activePlayer;
-
-
+  var currentPlayer=players[activePlayer]
+  var playerName=activePlayer;
   const newCardOption = true;
 
   function handleHighClick(card1, card2){
@@ -21,9 +19,20 @@ var playerName=activePlayer;
       console.log("changing from UI");
       handlePlayerChange();
     }
-    //document.querySelector(".flipper").classList.toggle("flip");//code for activating the flip from onClick
-    // console.log(currentPlayer.cardPosition);
+    flipCards(currentPlayer.cardPosition);
+  // console.log(currentPlayer.cardPosition);
   };
+
+  function flipCards(cardIndex){
+    if (activePlayer ===1){
+    console.log("card2", cardIndex);
+    var allCards = document.querySelectorAll(".flipper");
+    allCards[cardIndex+5].classList.toggle("flip");
+  }else{
+    var allCards = document.querySelectorAll(".flipper");
+    allCards[cardIndex].classList.toggle("flip");
+  }
+}
 
   function handleLowClick(card1, card2){
     if (playerGuessLow(card1, card2) && (currentPlayer.cardPosition < 4)) {

@@ -62,7 +62,6 @@ img{
 .flipper {
   transition: 0.6s;
   transform-style: preserve-3d;
-
   position: relative;
 }
 
@@ -82,8 +81,12 @@ img{
   transform: rotateY(180deg);
 }
 
-/* for toggling from button  */
-
-.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper{
+.flip {
   transform: rotateY(180deg);
 }
+
+/* for toggling from button  */
+
+/* .flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper{
+  transform: rotateY(180deg);
+} */
