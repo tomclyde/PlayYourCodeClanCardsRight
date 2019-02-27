@@ -23,9 +23,7 @@ img{
   height:auto;
 }
 
-.card-image {
-  background: "images/playing-card-back.png"
-}
+
 
 
 /*=============Media Queries===========*/
@@ -35,8 +33,6 @@ img{
     width:10rem;
   }
 }
-
-
 @media (max-width: 800px){
   img{
     width:6rem;

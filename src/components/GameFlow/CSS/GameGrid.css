@@ -1,7 +1,9 @@
 .game-grid {
   display: flex;
   flex-flow: wrap;
-  height: 1200px;
+  justify-content: space-around;
+  height: 45rem;
+  width: 100%;
 }
 
 
@@ -11,6 +13,7 @@
   justify-content: space-around;
   background-color: #12693F;  /*changed from blue to baize-green - SR */
   padding: 10px;
+  width:100%;
 
 }
 
@@ -20,8 +23,20 @@
   justify-content: space-around;
   background-color: #12693F;  /*changed from blue to baize-green - SR */
   padding: 10px;
+  width:100%
 }
 
 .selected{
   border: 5px solid red;/* changed from 2px to 5px to be more visible */
+}
+
+@media (max-width: 1200px) {
+  .game-grid{
+    height:30rem;
+  }
+}
+@media (max-width: 800px){
+  .game-grid{
+    height:20rem;
+  }
 }

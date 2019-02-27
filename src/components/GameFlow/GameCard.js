@@ -4,7 +4,7 @@ import './CSS/GameCard.css';
 const GameCard = (props) => (
 
     <div className="media-card">
-      <div className="card-image">
+
 
         <div className="flip-container">
           <div className="flipper">
@@ -16,7 +16,7 @@ const GameCard = (props) => (
             </div>
           </div>
         </div>
-        </div>
+        
       </div>
 
 );
