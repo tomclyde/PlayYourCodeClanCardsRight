@@ -18,7 +18,6 @@ class GameBox extends Component {
     this.drawCards = this.drawCards.bind(this);
     this.drawNewCard  = this.drawNewCard.bind(this);
     this.handlePlayerChange = this.handlePlayerChange.bind(this);
-    this.handleFreeze = this.handleFreeze.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +50,8 @@ class GameBox extends Component {
       this.setState(obj);
       obj[player]["cardPosition"] = 0;
       obj[player]["newCardOption"] = true;
+      obj[player]["availableFreeze"] = true;
+      obj[player]["positionIsFrozen"] = false;
     });
 
     request.send();
@@ -67,24 +68,19 @@ class GameBox extends Component {
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
 
-      // if (!newCard.cards) return null;
-      // currentPlayer.cards["0"] = newCard.cards["0"];
-      // currentPlayer.newCardOption = false;
-
       const cardobj = this.state;
       cardobj[card] = data;
 
       if(this.state.currentPlayer === 0){
         cardobj.player1cards = this.state.player1cards;
-        cardobj.player1cards.cards[0] = data.cards[0];
+        cardobj.player1cards.cards[cardobj.player1cards.cardPosition] = data.cards[0];
       }else{
         cardobj.player2cards = this.state.player2cards;
-        cardobj.player2cards.cards[0] = data.cards[0];
+        cardobj.player2cards.cards[cardobj.player2cards.cardPosition] = data.cards[0];
       }
 
-
       this.setState(cardobj);
-      console.log("1 card data", this.state.newCard);
+
     });
     request.send();
   };
@@ -104,19 +100,13 @@ class GameBox extends Component {
   handlePlayerChange(){
     if(this.state.currentPlayer === 0){
       this.setState({currentPlayer: 1 })
-      // console.log("after setState:",this.state.currentPlayer);
     }
     else {
     this.setState({currentPlayer: 0 })
     }
-    // console.log("currentPlayer:", this.state.currentPlayer);
   };
 
-  handleFreeze(){
-    console.log("handling the FREEZE");
-    //THIS IS WHERE THE SET STATE NEEDS TO HAPPEN BUT THE CARD DETAILS ARE NOT DEFINED IN STATE
-    // console.log(this.state.currentPlayer.cards);
-  };
+
 
   render(){
     return (
@@ -128,8 +118,7 @@ class GameBox extends Component {
            activePlayer={this.state.currentPlayer}
            handlePlayerChange={this.handlePlayerChange}
            allocateNewCard={this.allocateNewCard}
-           newCard={this.state.newCard}
-           handleFreeze={this.handleFreeze}/>
+           newCard={this.state.newCard}/>
         </div>
       </div>
     );
