@@ -70,13 +70,28 @@ class GameBox extends Component {
     this.setState({currentPlayer: 0 })
     }
     // console.log("currentPlayer:", this.state.currentPlayer);
+    if (this.state.currentPlayer===0){
+      var p1ClassRow = document.querySelector(".p1-card-row");
+      console.log(p1ClassRow);
+          p1ClassRow.classList.add("selected")
+
+      var p2ClassRow = document.querySelector(".p2-card-row");
+          p2ClassRow.classList.remove("selected")
+      }
+    else{
+      var p2ClassRow = document.querySelector(".p2-card-row");
+          p2ClassRow.classList.add("selected")
+
+      var p1ClassRow = document.querySelector(".p1-card-row");
+          p1ClassRow.classList.remove("selected")
+      }
   }
 
   render(){
     return (
       <div className="game-box">
         <h1 align="center">PLAY YOUR CARDS RIGHT</h1>  {/* Changed to uppercase & h2 to h1 (new font) - SR */}
-        <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} />
+        <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} activePlayer={this.state.currentPlayer}/>
         <div className="game-ui">
           <GameUI players={[this.state.player1cards, this.state.player2cards]} activePlayer={this.state.currentPlayer} handlePlayerChange={this.handlePlayerChange}/>
         </div>

@@ -11,7 +11,6 @@ var currentPlayer=players[activePlayer]
 var playerName=activePlayer;
 
 
-
   const newCardOption = true;
 
   function handleHighClick(card1, card2){
@@ -57,6 +56,7 @@ var playerName=activePlayer;
   // }
 
   return (
+
     <div className="ui-container">
       <div className="player-info">
         <h4 className="player-id">{playerName}</h4>

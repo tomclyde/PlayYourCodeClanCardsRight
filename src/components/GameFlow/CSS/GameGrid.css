@@ -4,7 +4,7 @@
   justify-content: space-around;
   background-color: #12693F;  /*changed from blue to baize-green - SR */
   padding: 10px;
-  border: 5px solid red; /* changed from 2px to 5px to be more visible */
+
 }
 
 .p2-card-row{
@@ -13,4 +13,8 @@
   justify-content: space-around;
   background-color: #12693F;  /*changed from blue to baize-green - SR */
   padding: 10px;
+}
+
+.selected{
+  border: 5px solid red;/* changed from 2px to 5px to be more visible */
 }
