@@ -1,33 +1,56 @@
 import React, {Component} from 'react';
 import "./withSplashPage.css";
 import GameBox from '../containers/GameBox'
+import HelpPage from '../containers/HelpPage'
 
 class WithSplashPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      status: "splashPage",
     };
-    this.handleSplashClick = this.handleSplashClick.bind(this);
-  }
-
-  handleSplashClick(){
-      this.setState({loading: false});
+    this.handlePlayClick = this.handlePlayClick.bind(this);
+    this.handleHelpClick = this.handleHelpClick.bind(this);
+    this.handleBackClick = this.handleBackClick.bind(this);
   };
 
-  render() {
-    // while checking user session, show "loading" message
-    if (this.state.loading) {
+  handlePlayClick(){
+      this.setState({status: "playGame"});
+  };
 
-    // otherwise, show the desired route
+  handleHelpClick(){
+      this.setState({status: "showHelp"});
+  };
+
+  handleBackClick(){
+    this.setState({status: "splashPage"});
+  }
+
+  render() {
+    if (this.state.status === "splashPage") {
     return (
       <div className="splash-page">
-        <button type="button" onClick={this.handleSplashClick} className="splash-button">
-          Play!
-        </button>
+
+        <div>
+          <button type="button" onClick={this.handlePlayClick}>
+            Play!
+          </button>
+        </div>
+
+        <div>
+          <button type="button" onClick={this.handleHelpClick}>
+            How to play???
+          </button>
+        </div>
       </div>
       );
-    } else { return <GameBox />};
+      document.getElementById('myAudio').play();
+
+    } else if (this.state.status === "playGame") {
+      return <GameBox handleButtonBackClick = {this.handleBackClick}/>
+    } else if (this.state.status === "showHelp") {
+      return <HelpPage handleButtonPlayClick = {this.handlePlayClick} handleButtonBackClick = {this.handleBackClick}/>
+    }
   }
 }
 

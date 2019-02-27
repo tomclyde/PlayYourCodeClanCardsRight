@@ -60,3 +60,33 @@
  top:0px;
  box-shadow: 0px 0px 0px rgba(15, 165, 60, 0.0);
 }
+
+#winModal {
+  font-size: 48px;
+  font-weight: bolder;
+  width: 50%;
+  height: 25%;
+  color:red;
+  text-align: center;
+  top: 25%;
+}
+
+#noFreeze {
+  font-size: 48px;
+  font-weight: bolder;
+  width: 50%;
+  height: 25%;
+  color:red;
+  text-align: center;
+  top: 25%;
+}
+
+#moreThanOnce {
+  font-size: 48px;
+  font-weight: bolder;
+  width: 50%;
+  height: 25%;
+  color:red;
+  text-align: center;
+  top: 25%;
+}

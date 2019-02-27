@@ -3,6 +3,7 @@ import './CSS/GameCard.css';
 
 const GameCard = (props) => (
 
+
     <div className="media-card">
 
 
@@ -18,6 +19,7 @@ const GameCard = (props) => (
         </div>
         
       </div>
+
 
 );
 
