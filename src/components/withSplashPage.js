@@ -47,7 +47,7 @@ class WithSplashPage extends Component {
       document.getElementById('myAudio').play();
 
     } else if (this.state.status === "playGame") {
-      return <GameBox />
+      return <GameBox handleButtonBackClick = {this.handleBackClick}/>
     } else if (this.state.status === "showHelp") {
       return <HelpPage handleButtonPlayClick = {this.handlePlayClick} handleButtonBackClick = {this.handleBackClick}/>
     }

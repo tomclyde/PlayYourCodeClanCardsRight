@@ -32,7 +32,7 @@ class HelpPage extends Component {
             on their cards would put them back no further than where they froze.</p>
             <p>Should the player regain control of the board, they will be allowed to change the frozen card.</p>
         </div>
-        
+
         <div className="play-button">
           <button type="button" onClick={this.props.handleButtonPlayClick} className="splash-play-button">
             Play!

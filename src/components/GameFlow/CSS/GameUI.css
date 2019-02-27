@@ -37,3 +37,23 @@ button {
   font-size: 20px;
   font-weight: bold;
 }
+
+#winModal {
+  font-size: 48px;
+  font-weight: bolder;
+  width: 50%;
+  height: 25%;
+  color:red;
+  text-align: center;
+  top: 25%;
+}
+
+#noFreeze {
+  font-size: 48px;
+  font-weight: bolder;
+  width: 50%;
+  height: 25%;
+  color:red;
+  text-align: center;
+  top: 25%;
+}

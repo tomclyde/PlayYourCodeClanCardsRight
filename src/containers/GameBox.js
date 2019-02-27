@@ -18,7 +18,9 @@ class GameBox extends Component {
     this.drawCards = this.drawCards.bind(this);
     this.drawNewCard  = this.drawNewCard.bind(this);
     this.handlePlayerChange = this.handlePlayerChange.bind(this);
-    this.handleFreeze = this.handleFreeze.bind(this);
+    this.handleButtonBackClick = this.props.handleButtonBackClick.bind(this);
+
+    // this.handleFreeze = this.handleFreeze.bind(this);
   }
 
   componentDidMount() {
@@ -112,11 +114,11 @@ class GameBox extends Component {
     // console.log("currentPlayer:", this.state.currentPlayer);
   };
 
-  handleFreeze(){
-    console.log("handling the FREEZE");
-    //THIS IS WHERE THE SET STATE NEEDS TO HAPPEN BUT THE CARD DETAILS ARE NOT DEFINED IN STATE
-    // console.log(this.state.currentPlayer.cards);
-  };
+  // handleFreeze(){
+  //   console.log("handling the FREEZE");
+  //   //THIS IS WHERE THE SET STATE NEEDS TO HAPPEN BUT THE CARD DETAILS ARE NOT DEFINED IN STATE
+  //   // console.log(this.state.currentPlayer.cards);
+  // };
 
   render(){
     return (
@@ -129,7 +131,8 @@ class GameBox extends Component {
            handlePlayerChange={this.handlePlayerChange}
            allocateNewCard={this.allocateNewCard}
            newCard={this.state.newCard}
-           handleFreeze={this.handleFreeze}/>
+           handleFreeze={this.handleFreeze}
+           handleButtonBackClick = {this.handleButtonBackClick}/>
         </div>
       </div>
     );

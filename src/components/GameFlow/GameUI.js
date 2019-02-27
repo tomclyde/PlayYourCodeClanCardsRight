@@ -2,7 +2,7 @@ import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
-const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, newCard, handleFreeze}) => {
+const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, newCard, handleFreeze, handleButtonBackClick}) => {
 
   if (players.length === 0) return null; //add loading message
 
@@ -46,22 +46,25 @@ var availableFreeze = true; // Only one FREEZE option permitted each game per pl
 
   function handleFreezeClick(){
     if (!currentPlayer.cardPosition > 0) {
-      alert("FREEZE option not permitted on 1st card!");
+      document.getElementById("noFreeze").showModal();
+      // alert("FREEZE option not permitted on 1st card!");
     } else if (!availableFreeze) {
-      alert("Only one FREEZE option per player per game!");
+      document.getElementById("myDialog").showModal();
+
+      // alert("Only one FREEZE option per player per game!");
     } else {
     availableFreeze = false;
 
-    // for (var i = 0; i < currentPlayer.cardPosition; i++) {
-    //   currentPlayer.cards[currentPlayer.i].image = "images/playing-card-back.png";
-    // };
+    for (var i = 0; i < currentPlayer.cardPosition; i++) {
+      currentPlayer.cards[i].image = "images/playing-card-back.png";
+    };
     // console.log(currentPlayer.cards[currentPlayer.cardPosition].image);
     }
     //unsure how to actually SHOW this via RENDER
-    currentPlayer.cards[currentPlayer.cardPosition].image = "images/playing-card-back.png";
+    // currentPlayer.cards[currentPlayer.cardPosition].image = "images/playing-card-back.png";
     console.log(currentPlayer.cards[currentPlayer.cardPosition].image);
     console.log("FREEZE CHECK: ", currentPlayer.cardPosition);
-    handleFreeze();
+    handlePlayerChange();
   };
 
 
@@ -79,7 +82,8 @@ var availableFreeze = true; // Only one FREEZE option permitted each game per pl
   };
 
   function gameOver(){
-    alert(`${playerNameLiteral} Wins!!!!!`)
+    // alert(`${playerNameLiteral} Wins!!!!!`)
+    document.getElementById("winModal").showModal();
     players[0].newCardOption = true;
     players[1].newCardOption = true;
     players[0].cardPosition = 0;
@@ -91,8 +95,8 @@ var availableFreeze = true; // Only one FREEZE option permitted each game per pl
     <div className="ui-container">
       <div className="player-info">
         <h4 className="player-id">{playerNameLiteral}</h4>
-        <button type="button">
-          Home
+        <button type="button" onClick={handleButtonBackClick}>
+          Go back
         </button>
       </div>
       <div className="buttons">
@@ -114,6 +118,8 @@ var availableFreeze = true; // Only one FREEZE option permitted each game per pl
         New
       </button>
       </div>
+      <dialog id="winModal">{`${playerNameLiteral} Wins!!!!!`}</dialog>
+      <dialog id="noFreeze">FREEZE option not permitted on 1st card!</dialog>
     </div>
   );
 
