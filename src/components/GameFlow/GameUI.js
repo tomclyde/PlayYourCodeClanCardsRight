@@ -2,7 +2,7 @@ import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
-const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, newCard, handleFreeze}) => {
+const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, newCard, handleFreeze, handleButtonBackClick}) => {
 
   if (players.length === 0) return null; //add loading message
 
@@ -45,10 +45,11 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
 
   function handleFreezeClick(){
     if (!currentPlayer.cardPosition > 0) {
-      alert("FREEZE option not permitted on 1st card!");
+
+      document.getElementById("noFreeze").showModal();
       return null;
     } else if (!currentPlayer.availableFreeze) {
-      alert("Only one FREEZE option per player per game!");
+      document.getElementById("myDialog").showModal();
       return null;
     } else
     {
@@ -83,7 +84,8 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
   };
 
   function gameOver(){
-    alert(`${playerNameLiteral} Wins!!!!!`)
+    // alert(`${playerNameLiteral} Wins!!!!!`)
+    document.getElementById("winModal").showModal();
     players[0].newCardOption = true;
     players[1].newCardOption = true;
     players[0].cardPosition = 0;
@@ -95,8 +97,8 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
     <div className="ui-container">
       <div className="player-info">
         <h4 className="player-id">{playerNameLiteral}</h4>
-        <button type="button">
-          Home
+        <button type="button" onClick={handleButtonBackClick}>
+          Go back
         </button>
       </div>
       <div className="buttons">
@@ -118,6 +120,8 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
         New
       </button>
       </div>
+      <dialog id="winModal">{`${playerNameLiteral} Wins!!!!!`}</dialog>
+      <dialog id="noFreeze">FREEZE option not permitted on 1st card!</dialog>
     </div>
   );
 

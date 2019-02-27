@@ -18,6 +18,9 @@ class GameBox extends Component {
     this.drawCards = this.drawCards.bind(this);
     this.drawNewCard  = this.drawNewCard.bind(this);
     this.handlePlayerChange = this.handlePlayerChange.bind(this);
+    this.handleButtonBackClick = this.props.handleButtonBackClick.bind(this);
+
+  
   }
 
   componentDidMount() {
@@ -107,7 +110,6 @@ class GameBox extends Component {
   };
 
 
-
   render(){
     return (
       <div className="game-box">
@@ -118,7 +120,8 @@ class GameBox extends Component {
            activePlayer={this.state.currentPlayer}
            handlePlayerChange={this.handlePlayerChange}
            allocateNewCard={this.allocateNewCard}
-           newCard={this.state.newCard}/>
+           newCard={this.state.newCard}
+           handleButtonBackClick = {this.handleButtonBackClick}/>
         </div>
       </div>
     );
