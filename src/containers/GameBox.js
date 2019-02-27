@@ -15,12 +15,13 @@ class GameBox extends Component {
     };
     this.allocateCards = this.allocateCards.bind(this);
     this.allocateNewCard = this.allocateNewCard.bind(this);
+    this.allocateNewCards = this.allocateNewCards.bind(this);
     this.drawCards = this.drawCards.bind(this);
     this.drawNewCard  = this.drawNewCard.bind(this);
     this.handlePlayerChange = this.handlePlayerChange.bind(this);
     this.handleButtonBackClick = this.props.handleButtonBackClick.bind(this);
 
-  
+
   }
 
   componentDidMount() {
@@ -88,8 +89,35 @@ class GameBox extends Component {
     request.send();
   };
 
-  // Add drawNewCard function perhaps similar to above ending the url in '1'.
-  // To be accessed from GameUI.js
+  // drawNewCards(card, activePlayer) {
+  //   console.log("In drawNewCards");
+  //   const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=5`;
+  //   const request = new XMLHttpRequest();
+  //   request.open('GET', url);
+  //
+  //   request.addEventListener("load", () => {
+  //     if (request.status !== 200) return;
+  //     const jsonString = request.responseText;
+  //     const data = JSON.parse(jsonString);
+  //
+  //     const cardobj = this.state;
+  //     cardobj[card] = data;
+  //
+  //     if(this.state.currentPlayer === 0){
+  //       this.setState({player1cards: []});
+  //       cardobj.player1cards = this.state.player1cards;
+  //       cardobj.player1cards.cards = data.cards;
+  //     }else{
+  //       this.setState({player2cards: []});
+  //       cardobj.player2cards = this.state.player2cards;
+  //       cardobj.player2cards.cards= data.cards;
+  //     }
+  //
+  //     this.setState(cardobj);
+  //
+  //   });
+  //   request.send();
+  // };
 
   allocateCards() {
     this.drawCards("player1cards");
@@ -99,6 +127,14 @@ class GameBox extends Component {
   allocateNewCard(currentPlayer) {
     this.drawNewCard("newCard", currentPlayer);
   }
+
+  allocateNewCards(currentPlayer) {
+    if (this.state.currentPlayer === 0) {
+      this.drawCards("player1cards");
+    } else {
+      this.drawCards("player2cards");
+    }
+  };
 
   handlePlayerChange(){
     if(this.state.currentPlayer === 0){
@@ -121,7 +157,8 @@ class GameBox extends Component {
            handlePlayerChange={this.handlePlayerChange}
            allocateNewCard={this.allocateNewCard}
            newCard={this.state.newCard}
-           handleButtonBackClick = {this.handleButtonBackClick}/>
+           handleButtonBackClick = {this.handleButtonBackClick}
+           allocateNewCards={this.allocateNewCards}/>
         </div>
       </div>
     );

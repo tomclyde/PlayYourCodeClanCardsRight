@@ -2,7 +2,10 @@ import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
-const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, newCard, handleFreeze, handleButtonBackClick}) => {
+const GameUI = (
+    {players, activePlayer, handlePlayerChange,
+    allocateNewCard, newCard, handleFreeze,
+    handleButtonBackClick, allocateNewCards}) => {
 
   if (players.length === 0) return null; //add loading message
 
@@ -25,6 +28,7 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
       }
     }
     else {
+          allocateNewCards();
           currentPlayer.cardPosition = 0;
           handlePlayerChange();
           }
@@ -38,6 +42,7 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
       }
     }
     else {
+          allocateNewCards();
           currentPlayer.cardPosition = 0;
           handlePlayerChange();
           }
