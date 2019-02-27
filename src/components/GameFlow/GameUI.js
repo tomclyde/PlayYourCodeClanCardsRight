@@ -51,12 +51,9 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
   function handleNewClick(){
     if(currentPlayer.cardPosition === 0)
       {
-        if (currentPlayer.newCardOption)
-        {
-        allocateNewCard();
-        if (!newCard.cards) return null;
-        currentPlayer.cards["0"] = newCard.cards["0"];
-        currentPlayer.newCardOption = false;
+        if (currentPlayer.newCardOption){
+          allocateNewCard(currentPlayer);
+          currentPlayer.newCardOption = false;
         }
         else {
           alert("New Card Option Already Used")
