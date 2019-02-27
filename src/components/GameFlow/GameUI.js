@@ -16,7 +16,6 @@ const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, new
     playerNameLiteral = "Player 2";
   }
 
-var availableFreeze = true; // Only one FREEZE option permitted each game per player
 
   function handleHighClick(card1, card2){
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
@@ -46,38 +45,41 @@ var availableFreeze = true; // Only one FREEZE option permitted each game per pl
 
   function handleFreezeClick(){
     if (!currentPlayer.cardPosition > 0) {
-      document.getElementById("noFreeze").showModal();
-      // alert("FREEZE option not permitted on 1st card!");
-    } else if (!availableFreeze) {
-      document.getElementById("myDialog").showModal();
 
-      // alert("Only one FREEZE option per player per game!");
-    } else {
-    availableFreeze = false;
+      document.getElementById("noFreeze").showModal();
+      return null;
+    } else if (!currentPlayer.availableFreeze) {
+      document.getElementById("myDialog").showModal();
+      return null;
+    } else
+    {
+    currentPlayer.availableFreeze = false;
 
     for (var i = 0; i < currentPlayer.cardPosition; i++) {
       currentPlayer.cards[i].image = "images/playing-card-back.png";
     };
-    // console.log(currentPlayer.cards[currentPlayer.cardPosition].image);
-    }
-    //unsure how to actually SHOW this via RENDER
-    // currentPlayer.cards[currentPlayer.cardPosition].image = "images/playing-card-back.png";
-    console.log(currentPlayer.cards[currentPlayer.cardPosition].image);
-    console.log("FREEZE CHECK: ", currentPlayer.cardPosition);
+
+    currentPlayer.positionIsFrozen = true;
+    currentPlayer.newCardOption = true;
     handlePlayerChange();
+    }
   };
 
 
   function handleNewClick(){
-    if(currentPlayer.cardPosition === 0)
+    if(currentPlayer.cardPosition === 0 || currentPlayer.positionIsFrozen )
       {
         if (currentPlayer.newCardOption){
           allocateNewCard(currentPlayer);
           currentPlayer.newCardOption = false;
+          currentPlayer.positionIsFrozen = false;
         }
         else {
           alert("New Card Option Already Used")
         }
+      }
+    else {
+        alert("New Card Option not allowed")
       }
   };
 
