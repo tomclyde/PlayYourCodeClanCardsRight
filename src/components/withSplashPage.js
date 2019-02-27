@@ -42,9 +42,10 @@ class WithSplashPage extends Component {
             How to play???
           </button>
         </div>
-
       </div>
       );
+      document.getElementById('myAudio').play();
+
     } else if (this.state.status === "playGame") {
       return <GameBox />
     } else if (this.state.status === "showHelp") {
