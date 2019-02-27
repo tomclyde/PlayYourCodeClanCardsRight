@@ -22,10 +22,30 @@ const GameUI = ({players, activePlayer, handlePlayerChange}) => {
   }
 }
 
+function flipCardsBack(cardIndex){
+  if (activePlayer ===1){
+  var allCards = document.querySelectorAll(".flipper");
+
+  for (var i = 0; i <= cardIndex; i++) {
+      allCards[i+5].classList.toggle("flip");
+    };
+
+}else{
+  var allCards = document.querySelectorAll(".flipper");
+
+  for (var i = 0; i <= cardIndex; i++) {
+      allCards[i].classList.toggle("flip");
+    };
+
+}
+}
+
   function handleHighClick(card1, card2){
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
     } else {
+      flipCardsBack(currentPlayer.cardPosition);
+      console.log("card index at flip back:",currentPlayer.cardPosition);
       currentPlayer.cardPosition = 0;
       console.log("changing from UI");
       handlePlayerChange();
@@ -40,9 +60,11 @@ const GameUI = ({players, activePlayer, handlePlayerChange}) => {
     if (playerGuessLow(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
     } else {
+      flipCardsBack(currentPlayer.cardPosition);
       currentPlayer.cardPosition = 0;
       // console.log(currentPlayer);
       console.log("changing from UI");
+
       handlePlayerChange();
     }
     // console.log(currentPlayer.cardPosition);
