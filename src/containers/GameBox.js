@@ -55,7 +55,7 @@ class GameBox extends Component {
     request.send();
   };
 
-  drawNewCard(card) {
+  drawNewCard(card, activePlayer) {
     console.log("In drawNewCard");
     const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=1`;
     const request = new XMLHttpRequest();
@@ -65,10 +65,25 @@ class GameBox extends Component {
       if (request.status !== 200) return;
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
-      const cardobj = {};
+
+      // if (!newCard.cards) return null;
+      // currentPlayer.cards["0"] = newCard.cards["0"];
+      // currentPlayer.newCardOption = false;
+
+      const cardobj = this.state;
       cardobj[card] = data;
+
+      if(this.state.currentPlayer === 0){
+        cardobj.player1cards = this.state.player1cards;
+        cardobj.player1cards.cards[0] = data.cards[0];
+      }else{
+        cardobj.player2cards = this.state.player2cards;
+        cardobj.player2cards.cards[0] = data.cards[0];
+      }
+
+
       this.setState(cardobj);
-      console.log("1 card data", this.newCard);
+      console.log("1 card data", this.state.newCard);
     });
     request.send();
   };
@@ -77,12 +92,12 @@ class GameBox extends Component {
   // To be accessed from GameUI.js
 
   allocateCards() {
-    const p1Drawn = this.drawCards("player1cards");
-    const p2Drawn = this.drawCards("player2cards");
+    this.drawCards("player1cards");
+    this.drawCards("player2cards");
   };
 
-  allocateNewCard() {
-    const allocatedNewCard = this.drawNewCard("newCard");
+  allocateNewCard(currentPlayer) {
+    this.drawNewCard("newCard", currentPlayer);
   }
 
   handlePlayerChange(){
