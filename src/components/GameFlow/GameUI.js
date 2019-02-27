@@ -18,7 +18,7 @@ const GameUI = (
   else {
     playerNameLiteral = "Player 2";
   }
-  
+
 
   function flipCards(cardIndex){
     if (activePlayer ===1){
@@ -65,9 +65,7 @@ function flipCardsBack(cardIndex){
 
       if(currentPlayer.cardPosition === 4){
         gameOver();
-      }
-    }
-    else {
+      }else {
           allocateNewCards();
           currentPlayer.cardPosition = 0;
           handlePlayerChange();
@@ -94,7 +92,6 @@ function flipCardsBack(cardIndex){
       if(currentPlayer.cardPosition === 4){
         gameOver();
       }
-    }
     else {
           allocateNewCards();
           currentPlayer.cardPosition = 0;
