@@ -1,39 +1,47 @@
 import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
-const GameUI = ({players, activePlayer, handlePlayerChange, handleFreeze}) => {
+
+const GameUI = ({players, activePlayer, handlePlayerChange, allocateNewCard, newCard, handleFreeze}) => {
 
   if (players.length === 0) return null; //add loading message
 
-
-var currentPlayer=players[activePlayer]
-var playerName=activePlayer;
+  var currentPlayer=players[activePlayer]
+  var playerName=activePlayer;
+  var playerNameLiteral = null;
+  if (playerName === 0){
+    playerNameLiteral = "Player 1";
+  }
+  else {
+    playerNameLiteral = "Player 2";
+  }
 
 var availableFreeze = true; // Only one FREEZE option permitted each game per player
-
-const newCardOption = true;
 
   function handleHighClick(card1, card2){
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
-    } else {
-      currentPlayer.cardPosition = 0;
-      console.log("changing from UI");
-      handlePlayerChange();
+      if(currentPlayer.cardPosition === 4){
+        gameOver();
+      }
     }
-    // console.log(currentPlayer.cardPosition);
+    else {
+          currentPlayer.cardPosition = 0;
+          handlePlayerChange();
+          }
   };
 
   function handleLowClick(card1, card2){
     if (playerGuessLow(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
-    } else {
-      currentPlayer.cardPosition = 0;
-      // console.log(currentPlayer);
-      console.log("changing from UI");
-      handlePlayerChange();
+      if(currentPlayer.cardPosition === 4){
+        gameOver();
+      }
     }
-    // console.log(currentPlayer.cardPosition);
+    else {
+          currentPlayer.cardPosition = 0;
+          handlePlayerChange();
+          }
   };
 
   function handleFreezeClick(){
@@ -58,24 +66,31 @@ const newCardOption = true;
 
 
   function handleNewClick(){
-    return
-    // To create new API draw one card but cannot yet access.
+    if(currentPlayer.cardPosition === 0)
+      {
+        if (currentPlayer.newCardOption){
+          allocateNewCard(currentPlayer);
+          currentPlayer.newCardOption = false;
+        }
+        else {
+          alert("New Card Option Already Used")
+        }
+      }
   };
 
-  // function handlePlayerChange(){
-  //   if(currentPlayer === players[0]){
-  //     currentPlayer=players[1];
-  //     //playerName = "Player 2"
-  //     //console.log(playerName);
-  //   }
-  //   else currentPlayer=players[0];
-  //   //playerName = "Player 1"
-  // }
+  function gameOver(){
+    alert(`${playerNameLiteral} Wins!!!!!`)
+    players[0].newCardOption = true;
+    players[1].newCardOption = true;
+    players[0].cardPosition = 0;
+    players[1].cardPosition = 0;
+  }
+
 
   return (
     <div className="ui-container">
       <div className="player-info">
-        <h4 className="player-id">{playerName}</h4>
+        <h4 className="player-id">{playerNameLiteral}</h4>
         <button type="button">
           Home
         </button>
