@@ -66,6 +66,11 @@ function flipCardsBack(cardIndex){
     }
     flipCards(currentPlayer.cardPosition);
 
+    if ((!currentPlayer.availableFreeze) && (currentPlayer.newCardOption)
+        && (currentPlayer.cardPosition > 0))
+      {
+        currentPlayer.newCardOption = false;
+      }
   };
 
 
@@ -87,6 +92,12 @@ function flipCardsBack(cardIndex){
     }
 
     flipCards(currentPlayer.cardPosition);
+
+    if ((!currentPlayer.availableFreeze) && (currentPlayer.newCardOption)
+        && (currentPlayer.cardPosition > 0))
+      {
+        currentPlayer.newCardOption = false;
+      }
   };
 
   function handleFreezeClick(){
@@ -114,13 +125,14 @@ function flipCardsBack(cardIndex){
   function handleNewClick(){
     if(currentPlayer.cardPosition === 0 || currentPlayer.positionIsFrozen )
       {
-        if (currentPlayer.newCardOption){
+        if (currentPlayer.newCardOption)
+        {
           allocateNewCard(currentPlayer);
           currentPlayer.newCardOption = false;
           currentPlayer.positionIsFrozen = false;
         }
         else {
-          alert("New Card Option Already Used")
+          alert("New Card Option not allowed")
         }
       }
     else {
