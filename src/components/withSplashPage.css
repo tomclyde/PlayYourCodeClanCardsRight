@@ -21,13 +21,13 @@
   justify-content: center;
 }
 
-.splash-button {
+.play-button {
   display: flex;
   flex-direction:column;
   justify-content: flex-end;
   position: absolute;
   top:70%;
-  left:32%;
+  left:27%;
   background-color: green;
   border-radius: 15px;
   width: 12rem;
@@ -40,7 +40,31 @@
   justify-content: center;
 }
 
-.splash-button:hover {
+.play-button:hover {
+  transform: scale(1.15, 1.15);
+  animation: jiggle 0.5s infinite linear;
+}
+
+.help-button {
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-end;
+  position: absolute;
+  top:70%;
+  left:39%;
+  background-color: green;
+  border-radius: 15px;
+  width: 12rem;
+  height: 8rem;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 2px 6px 6px rgba(15, 165, 60, 5);
+  align-items: center;
+  justify-content: center;
+}
+
+.help-button:hover {
   transform: scale(1.15, 1.15);
   animation: jiggle 0.5s infinite linear;
 }

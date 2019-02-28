@@ -50,14 +50,35 @@ function flipCardsBack(cardIndex){
 }
 }
 
+function flipNextCard(cardIndex){
+
+  if (activePlayer ===1){
+    var playerIndex = cardIndex+6;
+  }
+  else{
+    var playerIndex = cardIndex+1;
+  }
+
+  var allCards = document.querySelectorAll(".flipper");
+    allCards[playerIndex].classList.toggle("flip");
+
+  setTimeout(function(){
+    allCards[playerIndex].classList.toggle("flip");
+  },200)
+  }
+
+
   function handleHighClick(card1, card2){
+
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
       if(currentPlayer.cardPosition === 4){
+        flipCards(currentPlayer.cardPosition);
          gameOver();
        }
 
     } else {
+      flipNextCard(currentPlayer.cardPosition);
       flipCardsBack(currentPlayer.cardPosition);
       allocateNewCards();
       currentPlayer.cardPosition = 0;
@@ -79,11 +100,13 @@ function flipCardsBack(cardIndex){
     if (playerGuessLow(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
       if(currentPlayer.cardPosition === 4){
+        flipCards(currentPlayer.cardPosition);
         gameOver();
       }
 
 
     } else {
+      flipNextCard(currentPlayer.cardPosition);
       flipCardsBack(currentPlayer.cardPosition);
       allocateNewCards();
       currentPlayer.cardPosition = 0;
