@@ -129,6 +129,8 @@ function flipCardsBack(cardIndex){
   };
 
   function gameOver(){
+    var winner = document.getElementById("winner");
+    winner.play();
     document.getElementById("winModal").showModal();
     players[0].newCardOption = true;
     players[1].newCardOption = true;
@@ -140,6 +142,9 @@ function flipCardsBack(cardIndex){
   return (
 
     <div className="ui-container">
+      <audio id="winner" controls hidden>
+         <source src="audio/winner.mp3" type="audio/mp3" />
+      </audio>
       <div className="player-info">
 
         <h4 className="player-id">{playerNameLiteral}</h4>

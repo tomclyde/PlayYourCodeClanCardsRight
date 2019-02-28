@@ -29,8 +29,13 @@ class WithSplashPage extends Component {
   render() {
     if (this.state.status === "splashPage") {
     return (
-      <div className="splash-page">
-
+      <div className="splash-page" onLoad={() => {
+        var intro_music = document.getElementById("intro");
+        intro_music.play();
+      }}>
+        <audio id="intro" autoPlay controls hidden>
+      	   <source src="audio/PlayYourCardsRight.mp3" type="audio/mp3" />
+        </audio>
         <div>
           <button type="button" onClick={this.handlePlayClick}>
             Play!
@@ -44,7 +49,6 @@ class WithSplashPage extends Component {
         </div>
       </div>
       );
-      document.getElementById('myAudio').play();
 
     } else if (this.state.status === "playGame") {
       return <GameBox handleButtonBackClick = {this.handleBackClick}/>

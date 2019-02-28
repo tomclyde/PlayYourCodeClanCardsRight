@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import "../components/withSplashPage.css";
 class HelpPage extends Component {
 
   constructor(props){
@@ -34,13 +34,13 @@ class HelpPage extends Component {
         </div>
 
         <div className="play-button">
-          <button type="button" onClick={this.props.handleButtonPlayClick} className="splash-play-button">
+          <button type="button" onClick={this.props.handleButtonPlayClick} className="play-button">
             Play!
           </button>
         </div>
 
         <div className="back-button">
-          <button type="button" onClick={this.props.handleButtonBackClick} className="splash-back-button">
+          <button type="button" onClick={this.props.handleButtonBackClick} className="help-button">
             Go back
           </button>
         </div>

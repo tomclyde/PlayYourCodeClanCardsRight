@@ -2,7 +2,10 @@ import React, {Component} from "react";
 import GameGrid from "../components/GameFlow/GameGrid";
 import GameUI from "../components/GameFlow/GameUI";
 
+var nice = true;
+
 class GameBox extends Component {
+
 
   constructor(props){
     super(props);
@@ -89,36 +92,6 @@ class GameBox extends Component {
     request.send();
   };
 
-  // drawNewCards(card, activePlayer) {
-  //   console.log("In drawNewCards");
-  //   const url = `https://deckofcardsapi.com/api/deck/e60tw40zuhx3/draw/?count=5`;
-  //   const request = new XMLHttpRequest();
-  //   request.open('GET', url);
-  //
-  //   request.addEventListener("load", () => {
-  //     if (request.status !== 200) return;
-  //     const jsonString = request.responseText;
-  //     const data = JSON.parse(jsonString);
-  //
-  //     const cardobj = this.state;
-  //     cardobj[card] = data;
-  //
-  //     if(this.state.currentPlayer === 0){
-  //       this.setState({player1cards: []});
-  //       cardobj.player1cards = this.state.player1cards;
-  //       cardobj.player1cards.cards = data.cards;
-  //     }else{
-  //       this.setState({player2cards: []});
-  //       cardobj.player2cards = this.state.player2cards;
-  //       cardobj.player2cards.cards= data.cards;
-  //     }
-  //
-  //     this.setState(cardobj);
-  //
-  //   });
-  //   request.send();
-  // };
-
   allocateCards() {
     this.drawCards("player1cards");
     this.drawCards("player2cards");
@@ -137,6 +110,8 @@ class GameBox extends Component {
   };
 
   handlePlayerChange(){
+    var aww = document.getElementById("aww");
+    aww.play();
     if(this.state.currentPlayer === 0){
       this.setState({currentPlayer: 1 })
     }
@@ -162,8 +137,23 @@ class GameBox extends Component {
 
   render(){
     return (
-      <div className="game-box">
-        <h1 align="center">PLAY YOUR CARDS RIGHT</h1>  
+      <div className="game-box" onLoad={() => {
+        if (nice) {
+          var niceToSeeYou = document.getElementById("niceToSeeYou");
+          niceToSeeYou.play();
+          nice = false;
+        };
+      }}>
+
+        <audio id="aww" controls hidden>
+        <source src="audio/playerChange.mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="niceToSeeYou" autoPlay controls hidden>
+           <source src="audio/NiceToSeeYou.wav" type="audio/wav" />
+        </audio>
+
+        <h1 align="center">PLAY YOUR CARDS RIGHT</h1>
         <GameGrid player1={this.state.player1cards} player2={this.state.player2cards} activePlayer={this.state.currentPlayer}/>
         <div className="game-ui">
           <GameUI players={[this.state.player1cards, this.state.player2cards]}
