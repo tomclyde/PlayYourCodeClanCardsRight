@@ -32,13 +32,13 @@ class WithSplashPage extends Component {
       <div className="splash-page">
 
         <div>
-          <button type="button" onClick={this.handlePlayClick}>
+          <button type="button" onClick={this.handlePlayClick} className="play-button">
             Play!
           </button>
         </div>
 
         <div>
-          <button type="button" onClick={this.handleHelpClick}>
+          <button type="button" onClick={this.handleHelpClick} className="help-button">
             How to play???
           </button>
         </div>
