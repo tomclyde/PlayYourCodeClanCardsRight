@@ -2,13 +2,23 @@ import React from "react";
 import './CSS/GameUI.css';
 import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 
-const GameUI = ({players, activePlayer, handlePlayerChange}) => {
+const GameUI = (
+    {players, activePlayer, handlePlayerChange,
+    allocateNewCard, newCard, handleFreeze,
+    handleButtonBackClick, allocateNewCards}) => {
 
   if (players.length === 0) return null; //add loading message
 
-
   var currentPlayer=players[activePlayer]
   var playerName=activePlayer;
+  var playerNameLiteral = null;
+  if (playerName === 0){
+    playerNameLiteral = "Player 1";
+  }
+  else {
+    playerNameLiteral = "Player 2";
+  }
+
   const newCardOption = true;
 
   function flipCards(cardIndex){
@@ -43,15 +53,19 @@ function flipCardsBack(cardIndex){
   function handleHighClick(card1, card2){
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
+      if(currentPlayer.cardPosition === 4){
+         gameOver();
+       }
+
     } else {
       flipCardsBack(currentPlayer.cardPosition);
-      console.log("card index at flip back:",currentPlayer.cardPosition);
+      allocateNewCards();
       currentPlayer.cardPosition = 0;
-      console.log("changing from UI");
+
       handlePlayerChange();
     }
     flipCards(currentPlayer.cardPosition);
-  // console.log(currentPlayer.cardPosition);
+
   };
 
 
@@ -59,48 +73,83 @@ function flipCardsBack(cardIndex){
   function handleLowClick(card1, card2){
     if (playerGuessLow(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
+      if(currentPlayer.cardPosition === 4){
+        gameOver();
+      }
+
+
     } else {
       flipCardsBack(currentPlayer.cardPosition);
+      allocateNewCards();
       currentPlayer.cardPosition = 0;
-      // console.log(currentPlayer);
-      console.log("changing from UI");
 
       handlePlayerChange();
     }
-    // console.log(currentPlayer.cardPosition);
+
     flipCards(currentPlayer.cardPosition);
   };
 
   function handleFreezeClick(){
+    if (!currentPlayer.cardPosition > 0) {
+      document.getElementById("noFreeze").showModal();
+      return null;
+    } else if (!currentPlayer.availableFreeze) {
+      document.getElementById("moreThanOnce").showModal();
+      return null;
+    } else
+    {
+    currentPlayer.availableFreeze = false;
 
+    for (var i = 0; i < currentPlayer.cardPosition; i++) {
+      currentPlayer.cards[i].image = "images/playing-card-back.png";
+    };
+
+    currentPlayer.positionIsFrozen = true;
+    currentPlayer.newCardOption = true;
+    handlePlayerChange();
+    }
   };
+
 
   function handleNewClick(){
-    // To create new API draw one card but cannot yet access.
+    if(currentPlayer.cardPosition === 0 || currentPlayer.positionIsFrozen )
+      {
+        if (currentPlayer.newCardOption){
+          allocateNewCard(currentPlayer);
+          currentPlayer.newCardOption = false;
+          currentPlayer.positionIsFrozen = false;
+        }
+        else {
+          alert("New Card Option Already Used")
+        }
+      }
+    else {
+        alert("New Card Option not allowed")
+      }
   };
 
-  // function handlePlayerChange(){
-  //   if(currentPlayer === players[0]){
-  //     currentPlayer=players[1];
-  //     //playerName = "Player 2"
-  //     //console.log(playerName);
-  //   }
-  //   else currentPlayer=players[0];
-  //   //playerName = "Player 1"
-  // }
+  function gameOver(){
+    document.getElementById("winModal").showModal();
+    players[0].newCardOption = true;
+    players[1].newCardOption = true;
+    players[0].cardPosition = 0;
+    players[1].cardPosition = 0;
+  }
+
 
   return (
 
     <div className="ui-container">
       <div className="player-info">
-        <h4 className="player-id">{playerName}</h4>
-        <button type="button"><span>
+
+        <h4 className="player-id">{playerNameLiteral}</h4>
+        <button type="button" onClick={handleButtonBackClick}><span>
           Home
         </span></button>
+
       </div>
       <div className="buttons">
-      <button type="button" onClick={() =>
-        handleHighClick(
+      <button type="button" onClick={() =>handleHighClick(
           currentPlayer.cards[currentPlayer.cardPosition].value,
           currentPlayer.cards[(currentPlayer.cardPosition) + 1].value)}>
         Higher
@@ -110,13 +159,17 @@ function flipCardsBack(cardIndex){
         currentPlayer.cards[(currentPlayer.cardPosition) + 1].value)}}>
         Lower
       </button>
-      <button type="button" onClick={() => {handleFreezeClick()}}>
+      <button type="button" onClick={() => {handleFreezeClick(
+        currentPlayer.cards[currentPlayer.cardPosition].image)}}>
         Freeze
       </button>
       <button type="button" onClick={() => {handleNewClick()}}>
         New
       </button>
       </div>
+      <dialog id="winModal">{`${playerNameLiteral} Wins!!!!!`}</dialog>
+      <dialog id="noFreeze">FREEZE option not permitted on 1st card!</dialog>
+      <dialog id="moreThanOnce">Only ONE freeze permitted per player in each game!</dialog>
     </div>
   );
 

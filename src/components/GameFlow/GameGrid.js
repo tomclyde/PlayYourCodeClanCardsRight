@@ -5,7 +5,6 @@ import GameCard from "./GameCard";
 import './CSS/GameGrid.css';
 
 const GameGrid = (props) => {
-  // console.log(props);
   if (!props.player1.cards) return null;
 
   const p1cardNodes = props.player1.cards.map(card => {
@@ -27,7 +26,6 @@ const GameGrid = (props) => {
       </GameCard>
     );
   });
-
 
   return (
     <div className="game-grid">

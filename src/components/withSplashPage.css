@@ -1,3 +1,4 @@
+
 .splash-page {
   background-image: url("/images/play-cards-right.jpg");
   background-size: cover;
@@ -7,8 +8,9 @@
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
-  background-position:top;
+  background-position:center;
 }
+
 
 .splash-screen {
   width: 100vw;
@@ -52,4 +54,5 @@
 
   100% {transform: rotate(-2deg)
   scale(1.15, 1.15)}
+
 }

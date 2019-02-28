@@ -16,7 +16,7 @@ const GameCard = (props) => (
             </div>
           </div>
         </div>
-        
+
       </div>
 
 );
