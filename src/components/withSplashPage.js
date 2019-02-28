@@ -37,13 +37,13 @@ class WithSplashPage extends Component {
       	   <source src="audio/PlayYourCardsRight.mp3" type="audio/mp3" />
         </audio>
         <div>
-          <button type="button" onClick={this.handlePlayClick}>
+          <button type="button" onClick={this.handlePlayClick} className="play-button">
             Play!
           </button>
         </div>
 
         <div>
-          <button type="button" onClick={this.handleHelpClick}>
+          <button type="button" onClick={this.handleHelpClick} className="help-button">
             How to play???
           </button>
         </div>

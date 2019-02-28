@@ -114,25 +114,21 @@ class GameBox extends Component {
     aww.play();
     if(this.state.currentPlayer === 0){
       this.setState({currentPlayer: 1 })
-    }
-    else {
-    this.setState({currentPlayer: 0 })
-    }
-    if (this.state.currentPlayer===0){
-      var p1ClassRow = document.querySelector(".p1-card-row");
-      console.log(p1ClassRow);
-          p1ClassRow.classList.add("selected")
-
-      var p2ClassRow = document.querySelector(".p2-card-row");
-          p2ClassRow.classList.remove("selected")
-      }
-    else{
       var p2ClassRow = document.querySelector(".p2-card-row");
           p2ClassRow.classList.add("selected")
 
       var p1ClassRow = document.querySelector(".p1-card-row");
           p1ClassRow.classList.remove("selected")
-      }
+    }
+    else {
+    this.setState({currentPlayer: 0 })
+    var p1ClassRow = document.querySelector(".p1-card-row");
+        p1ClassRow.classList.add("selected")
+
+    var p2ClassRow = document.querySelector(".p2-card-row");
+        p2ClassRow.classList.remove("selected")
+    }
+
   }
 
   render(){

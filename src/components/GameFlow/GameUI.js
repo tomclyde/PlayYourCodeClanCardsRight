@@ -50,14 +50,35 @@ function flipCardsBack(cardIndex){
 }
 }
 
+function flipNextCard(cardIndex){
+
+  if (activePlayer ===1){
+    var playerIndex = cardIndex+6;
+  }
+  else{
+    var playerIndex = cardIndex+1;
+  }
+
+  var allCards = document.querySelectorAll(".flipper");
+    allCards[playerIndex].classList.toggle("flip");
+
+  setTimeout(function(){
+    allCards[playerIndex].classList.toggle("flip");
+  },200)
+  }
+
+
   function handleHighClick(card1, card2){
+
     if (playerGuessHigh(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
       if(currentPlayer.cardPosition === 4){
+        flipCards(currentPlayer.cardPosition);
          gameOver();
        }
 
     } else {
+      flipNextCard(currentPlayer.cardPosition);
       flipCardsBack(currentPlayer.cardPosition);
       allocateNewCards();
       currentPlayer.cardPosition = 0;
@@ -66,6 +87,11 @@ function flipCardsBack(cardIndex){
     }
     flipCards(currentPlayer.cardPosition);
 
+    if ((!currentPlayer.availableFreeze) && (currentPlayer.newCardOption)
+        && (currentPlayer.cardPosition > 0))
+      {
+        currentPlayer.newCardOption = false;
+      }
   };
 
 
@@ -74,11 +100,13 @@ function flipCardsBack(cardIndex){
     if (playerGuessLow(card1, card2) && (currentPlayer.cardPosition < 4)) {
       currentPlayer.cardPosition +=1;
       if(currentPlayer.cardPosition === 4){
+        flipCards(currentPlayer.cardPosition);
         gameOver();
       }
 
 
     } else {
+      flipNextCard(currentPlayer.cardPosition);
       flipCardsBack(currentPlayer.cardPosition);
       allocateNewCards();
       currentPlayer.cardPosition = 0;
@@ -87,6 +115,12 @@ function flipCardsBack(cardIndex){
     }
 
     flipCards(currentPlayer.cardPosition);
+
+    if ((!currentPlayer.availableFreeze) && (currentPlayer.newCardOption)
+        && (currentPlayer.cardPosition > 0))
+      {
+        currentPlayer.newCardOption = false;
+      }
   };
 
   function handleFreezeClick(){
@@ -114,13 +148,14 @@ function flipCardsBack(cardIndex){
   function handleNewClick(){
     if(currentPlayer.cardPosition === 0 || currentPlayer.positionIsFrozen )
       {
-        if (currentPlayer.newCardOption){
+        if (currentPlayer.newCardOption)
+        {
           allocateNewCard(currentPlayer);
           currentPlayer.newCardOption = false;
           currentPlayer.positionIsFrozen = false;
         }
         else {
-          alert("New Card Option Already Used")
+          alert("New Card Option not allowed")
         }
       }
     else {
