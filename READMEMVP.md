@@ -23,3 +23,6 @@ Add a new card option to allow player to change first card
 Add a freeze option to freeze part way through the card row for a player,  if they are not confident of guessing high/low.  play then switches to the other player.  If the other player gets a guess wrong or freezes then play returns to the prior frozen player.   That player then has the option to change their frozen card, one time only, to hopefully a more advantageous card,  and then continue play.   Freeze is only to be allowed once per player
 
 Add flip animation to the cards.
+
+
+Note -  This game is not for commercial use,  it is for educational purposes only
