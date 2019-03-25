@@ -54,11 +54,12 @@ class GameBox extends Component {
       const obj = {};
       // could change to fetch
       obj[player] = data;
-      this.setState(obj);
+      
       obj[player]["cardPosition"] = 0;
       obj[player]["newCardOption"] = true;
       obj[player]["availableFreeze"] = true;
       obj[player]["positionIsFrozen"] = false;
+      this.setState(obj);
     });
 
     request.send();

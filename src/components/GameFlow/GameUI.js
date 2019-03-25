@@ -64,7 +64,7 @@ function flipNextCard(cardIndex){
 
   setTimeout(function(){
     allCards[playerIndex].classList.toggle("flip");
-  },200)
+  },1000)
   }
 
 
@@ -76,16 +76,20 @@ function flipNextCard(cardIndex){
         flipCards(currentPlayer.cardPosition);
          gameOver();
        }
+       flipCards(currentPlayer.cardPosition);
 
     } else {
       flipNextCard(currentPlayer.cardPosition);
-      flipCardsBack(currentPlayer.cardPosition);
-      allocateNewCards();
-      currentPlayer.cardPosition = 0;
 
-      handlePlayerChange();
+      setTimeout(function(){
+        flipCardsBack(currentPlayer.cardPosition);
+        allocateNewCards();
+        currentPlayer.cardPosition = 0;
+        handlePlayerChange();
+        flipCards(currentPlayer.cardPosition);
+      },1000)
     }
-    flipCards(currentPlayer.cardPosition);
+    // flipCards(currentPlayer.cardPosition);
 
     if ((!currentPlayer.availableFreeze) && (currentPlayer.newCardOption)
         && (currentPlayer.cardPosition > 0))
@@ -103,18 +107,21 @@ function flipNextCard(cardIndex){
         flipCards(currentPlayer.cardPosition);
         gameOver();
       }
+      flipCards(currentPlayer.cardPosition);
 
 
     } else {
       flipNextCard(currentPlayer.cardPosition);
-      flipCardsBack(currentPlayer.cardPosition);
-      allocateNewCards();
-      currentPlayer.cardPosition = 0;
 
-      handlePlayerChange();
+      setTimeout(function(){
+        flipCardsBack(currentPlayer.cardPosition);
+        allocateNewCards();
+        currentPlayer.cardPosition = 0;
+        handlePlayerChange();
+        flipCards(currentPlayer.cardPosition);
+      },1000)
     }
-
-    flipCards(currentPlayer.cardPosition);
+    // flipCards(currentPlayer.cardPosition);
 
     if ((!currentPlayer.availableFreeze) && (currentPlayer.newCardOption)
         && (currentPlayer.cardPosition > 0))
