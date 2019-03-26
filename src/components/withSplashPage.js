@@ -36,13 +36,11 @@ class WithSplashPage extends Component {
         <audio id="intro" autoPlay controls hidden>
       	   <source src="audio/PlayYourCardsRight.mp3" type="audio/mp3" />
         </audio>
-        <div>
+        <div className="splash-page-buttons">
           <button type="button" onClick={this.handlePlayClick} className="play-button">
             Play!
           </button>
-        </div>
-
-        <div>
+       
           <button type="button" onClick={this.handleHelpClick} className="help-button">
             How to play???
           </button>
