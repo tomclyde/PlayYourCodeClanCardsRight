@@ -1,4 +1,10 @@
 
+
+
+
+
+
+
 .splash-page {
   background-image: url("/images/play-cards-right.jpg");
   background-size: cover;
@@ -129,4 +135,15 @@
 .help-page-button:hover {
   transform: scale(1.15, 1.15);
   animation: jiggle 0.5s infinite linear;
+}
+
+
+@media (max-width: 580px){
+  .play-button{
+    margin-left: 0;
+  }
+
+  .splash-page-buttons{
+    justify-content: center;
+  }
 }
