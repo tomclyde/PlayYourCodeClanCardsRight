@@ -21,13 +21,20 @@
   justify-content: center;
 }
 
+.splash-page-buttons {
+  background-color: white;
+  height: 200px;
+  display: flex;
+  left: 30px;
+}
+
 .play-button {
   display: flex;
   flex-direction:column;
   justify-content: flex-end;
-  position: absolute;
-  top:70%;
-  left:27%;
+  /* position: absolute; */
+  /* top:70%;
+  left:27%; */
   background-color: green;
   border-radius: 15px;
   width: 12rem;
@@ -49,9 +56,9 @@
   display: flex;
   flex-direction:column;
   justify-content: flex-end;
-  position: absolute;
-  top:70%;
-  left:39%;
+  /* position: absolute; */
+  /* top:70%;
+  left:39%; */
   background-color: green;
   border-radius: 15px;
   width: 12rem;
@@ -79,4 +86,44 @@
   100% {transform: rotate(-2deg)
   scale(1.15, 1.15)}
 
+}
+
+.help-text {
+  background-color: white;
+  width: 600px;
+  height: 700px;
+  overflow: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  border-radius: 10px;
+  text-align: center;
+  border: 3px solid black;
+}
+
+.help-page-buttons {
+  background-color: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.help-page-button {
+  background-color: green;
+  margin: 0 10px;
+  width: 140px;
+  height: 60px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 2px 6px 6px rgba(15, 165, 60, 5);
+}
+
+.help-page-button:hover {
+  transform: scale(1.15, 1.15);
+  animation: jiggle 0.5s infinite linear;
 }

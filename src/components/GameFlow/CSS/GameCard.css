@@ -60,7 +60,6 @@ img{
 
 .front, .back {
   backface-visibility: hidden;
-
   position: absolute;
   top:0;
   left:0;
@@ -68,6 +67,14 @@ img{
 
 .front {
   z-index: 2;
+}
+
+.playerBlue img {
+  filter: hue-rotate(220deg);
+}
+
+.playerBlue .current .back img {
+  filter: none;
 }
 
 .back{
