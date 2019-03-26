@@ -43,7 +43,7 @@ class PlayerForm extends Component {
           <label>
             Player 1:
           </label>
-            <input type="text" id="player1_name" name="player1_name" onChange={this.handlePlayer1Name} required/>
+            <input type="text" id="player1_name" name="player1_name" onChange={this.handlePlayer1Name} autofocus="true"/>
           <label>
             Player 2:
           </label>
