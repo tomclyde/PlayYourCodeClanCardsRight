@@ -5,7 +5,7 @@ import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 const GameUI = (
     {players, activePlayer, handlePlayerChange,
     allocateNewCard, newCard, handleFreeze,
-    handleButtonBackClick, allocateNewCards}) => {
+    handleButtonBackClick, allocateNewCards, player1_name, player2_name}) => {
 
   if (players.length === 0) return null; //add loading message
 
@@ -13,10 +13,10 @@ const GameUI = (
   var playerName=activePlayer;
   var playerNameLiteral = null;
   if (playerName === 0){
-    playerNameLiteral = "Player 1";
+    playerNameLiteral = player1_name;
   }
   else {
-    playerNameLiteral = "Player 2";
+    playerNameLiteral = player2_name;
   }
 
   const newCardOption = true;
@@ -80,7 +80,7 @@ function flipNextCard(cardIndex){
 
     } else {
       flipNextCard(currentPlayer.cardPosition);
-      
+
       setTimeout(function(){
         flipCardsBack(currentPlayer.cardPosition);
         allocateNewCards();
