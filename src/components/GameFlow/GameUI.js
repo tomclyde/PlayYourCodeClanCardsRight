@@ -80,7 +80,7 @@ function flipNextCard(cardIndex){
 
     } else {
       flipNextCard(currentPlayer.cardPosition);
-
+      
       setTimeout(function(){
         flipCardsBack(currentPlayer.cardPosition);
         allocateNewCards();
