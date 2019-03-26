@@ -54,7 +54,7 @@ class GameBox extends Component {
       const obj = {};
       // could change to fetch
       obj[player] = data;
-      
+
       obj[player]["cardPosition"] = 0;
       obj[player]["newCardOption"] = true;
       obj[player]["availableFreeze"] = true;
@@ -159,7 +159,9 @@ class GameBox extends Component {
            allocateNewCard={this.allocateNewCard}
            newCard={this.state.newCard}
            handleButtonBackClick = {this.handleButtonBackClick}
-           allocateNewCards={this.allocateNewCards}/>
+           allocateNewCards={this.allocateNewCards}
+           player1_name = {this.props.player1_name}
+           player2_name = {this.props.player2_name}/>
         </div>
       </div>
     );

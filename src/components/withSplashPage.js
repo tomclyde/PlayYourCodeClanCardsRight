@@ -40,16 +40,16 @@ class WithSplashPage extends Component {
           <button type="button" onClick={this.handlePlayClick} className="play-button">
             Play!
           </button>
-       
+
           <button type="button" onClick={this.handleHelpClick} className="help-button">
-            How to play???
+            How to play??
           </button>
         </div>
       </div>
       );
 
     } else if (this.state.status === "playGame") {
-      return <GameBox handleButtonBackClick = {this.handleBackClick}/>
+      return <GameBox handleButtonBackClick = {this.handleBackClick} player1_name = {this.props.player1_name} player2_name = {this.props.player2_name}/>
     } else if (this.state.status === "showHelp") {
       return <HelpPage handleButtonPlayClick = {this.handlePlayClick} handleButtonBackClick = {this.handleBackClick}/>
     }
