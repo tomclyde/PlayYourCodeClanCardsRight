@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import WithSplashPage from '../withSplashPage.js';
+import "../withSplashPage.css";
 
 class PlayerForm extends Component {
   constructor (props) {
@@ -35,19 +36,21 @@ class PlayerForm extends Component {
   render() {
     if (this.state.status === "login" ){
     return(
-      <div>
-        <h1>enter names</h1>
+      <div className="player-form-page">
+      <div className="form">
+        <h1>Enter Names</h1>
         <form>
           <label>
             Player 1:
-            <input id="player1_name" type="text" name="player1_name" onChange={this.handlePlayer1Name}/>
           </label>
+            <input type="text" id="player1_name" name="player1_name" onChange={this.handlePlayer1Name} required/>
           <label>
             Player 2:
-            <input id="player2_name" type="text" name="player2_name" onChange={this.handlePlayer2Name}/>
           </label>
-          <input type="button" value="submit" onClick={this.handleSubmitClick}/>
+            <input type="text" id="player2_name" name="player2_name" onChange={this.handlePlayer2Name} required/>
+          <input type="submit" value="Submit" onClick={this.handleSubmitClick}/>
         </form>
+        </div>
       </div>
 
     )
