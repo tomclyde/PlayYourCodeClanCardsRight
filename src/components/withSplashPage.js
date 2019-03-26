@@ -42,7 +42,7 @@ class WithSplashPage extends Component {
           </button>
 
           <button type="button" onClick={this.handleHelpClick} className="help-button">
-            How to play???
+            How to play??
           </button>
         </div>
       </div>
