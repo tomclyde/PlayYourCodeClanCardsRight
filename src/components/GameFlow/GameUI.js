@@ -5,7 +5,7 @@ import {playerGuessHigh, playerGuessLow} from '../models/high_low_logic.js';
 const GameUI = (
     {players, activePlayer, handlePlayerChange,
     allocateNewCard, newCard, handleFreeze,
-    handleButtonBackClick, allocateNewCards}) => {
+    handleButtonBackClick, allocateNewCards, player1_name, player2_name}) => {
 
   if (players.length === 0) return null; //add loading message
 
@@ -13,10 +13,10 @@ const GameUI = (
   var playerName=activePlayer;
   var playerNameLiteral = null;
   if (playerName === 0){
-    playerNameLiteral = "Player 1";
+    playerNameLiteral = player1_name;
   }
   else {
-    playerNameLiteral = "Player 2";
+    playerNameLiteral = player2_name;
   }
 
   const newCardOption = true;
@@ -64,7 +64,7 @@ function flipNextCard(cardIndex){
 
   setTimeout(function(){
     allCards[playerIndex].classList.toggle("flip");
-  },200)
+  },1000)
   }
 
 
@@ -76,16 +76,20 @@ function flipNextCard(cardIndex){
         flipCards(currentPlayer.cardPosition);
          gameOver();
        }
+       flipCards(currentPlayer.cardPosition);
 
     } else {
       flipNextCard(currentPlayer.cardPosition);
-      flipCardsBack(currentPlayer.cardPosition);
-      allocateNewCards();
-      currentPlayer.cardPosition = 0;
 
-      handlePlayerChange();
+      setTimeout(function(){
+        flipCardsBack(currentPlayer.cardPosition);
+        allocateNewCards();
+        currentPlayer.cardPosition = 0;
+        handlePlayerChange();
+        flipCards(currentPlayer.cardPosition);
+      },1000)
     }
-    flipCards(currentPlayer.cardPosition);
+    // flipCards(currentPlayer.cardPosition);
 
     if ((!currentPlayer.availableFreeze) && (currentPlayer.newCardOption)
         && (currentPlayer.cardPosition > 0))
@@ -103,18 +107,21 @@ function flipNextCard(cardIndex){
         flipCards(currentPlayer.cardPosition);
         gameOver();
       }
+      flipCards(currentPlayer.cardPosition);
 
 
     } else {
       flipNextCard(currentPlayer.cardPosition);
-      flipCardsBack(currentPlayer.cardPosition);
-      allocateNewCards();
-      currentPlayer.cardPosition = 0;
 
-      handlePlayerChange();
+      setTimeout(function(){
+        flipCardsBack(currentPlayer.cardPosition);
+        allocateNewCards();
+        currentPlayer.cardPosition = 0;
+        handlePlayerChange();
+        flipCards(currentPlayer.cardPosition);
+      },1000)
     }
-
-    flipCards(currentPlayer.cardPosition);
+    // flipCards(currentPlayer.cardPosition);
 
     if ((!currentPlayer.availableFreeze) && (currentPlayer.newCardOption)
         && (currentPlayer.cardPosition > 0))
